@@ -16,12 +16,12 @@ const StatsSection = () => {
                 threshold: 0.1,
             }
         );
-        
+
         const currentRef = domRef.current;
         if (currentRef) {
             observer.observe(currentRef);
         }
-        
+
         return () => {
             if (currentRef) observer.unobserve(currentRef);
         };
@@ -37,9 +37,90 @@ const StatsSection = () => {
 
     return (
         <section style={{ padding: '100px 0 0' }}>
+            {/* Scoped CSS to make the stats card completely responsive */}
+            <style>{`
+                /* Prevent background glows from breaking the screen width */
+                .stats-band {
+                    position: relative;
+                    overflow: hidden; 
+                    padding: 80px 40px;
+                    border-radius: 32px;
+                }
+
+                /* Default Desktop Layout (4 equal columns) */
+                .stats-grid {
+                    display: grid;
+                    grid-template-columns: repeat(4, 1fr);
+                    gap: 32px;
+                    width: 100%;
+                    position: relative;
+                    z-index: 2;
+                }
+
+                .stat {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    text-align: center;
+                }
+
+                .stat .num {
+                    font-size: 56px;
+                    font-weight: 800;
+                    line-height: 1.1;
+                    margin-bottom: 12px;
+                }
+
+                .stat .lbl {
+                    font-size: 15px;
+                    line-height: 1.5;
+                    color: rgba(255, 255, 255, 0.85);
+                }
+
+                /* Tablet Breakpoint (2x2 Grid) */
+                @media (max-width: 992px) {
+                    .stats-grid {
+                        grid-template-columns: repeat(2, 1fr);
+                        gap: 48px 24px;
+                    }
+                    
+                    .stats-band {
+                        padding: 60px 24px;
+                    }
+                }
+
+                /* Mobile Breakpoint (Single Column Vertical Stack) */
+                @media (max-width: 576px) {
+                    .stats-band {
+                        padding: 48px 16px;
+                    }
+
+                    .stats-grid {
+                        grid-template-columns: 1fr; /* Stack vertically */
+                        gap: 40px;
+                    }
+
+                    .stat .num {
+                        font-size: 48px !important; /* Scale down metric sizes slightly to fit perfectly */
+                    }
+
+                    .stat .lbl {
+                        font-size: 14px !important;
+                        max-width: 280px; /* Keep text centered and clean */
+                        margin: 0 auto;
+                    }
+
+                    /* Scale down background blurs so they don't drown out the screen on mobile */
+                    .stats-band .pl {
+                        width: 260px !important;
+                        height: 260px !important;
+                    }
+                }
+            `}</style>
+
             <div className="wrap">
-                <div 
-                    ref={domRef} 
+                <div
+                    ref={domRef}
                     className="stats-band"
                     style={animStyle}
                 >
