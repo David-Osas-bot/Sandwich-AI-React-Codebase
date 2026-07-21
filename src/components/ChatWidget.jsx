@@ -14,7 +14,7 @@ const ChatWidget = () => {
   const [inputValue, setInputValue] = useState('');
   const [conversationId, setConversationId] = useState(null);
   const [isTyping, setIsTyping] = useState(false);
-  
+
   const [messages, setMessages] = useState([
     {
       id: 'initial',
@@ -32,7 +32,7 @@ const ChatWidget = () => {
   ]);
 
   const chatBodyRef = useRef(null);
-
+ 
   // --- Toggle Chat Handler (FIXED) ---
   const toggleChat = () => setIsOpen(prev => !prev);
 
@@ -75,10 +75,10 @@ const ChatWidget = () => {
     const userMsgId = `${Date.now()}-user`;
     setMessages(prev => [...prev, { id: userMsgId, who: 'user', text }]);
     setInputValue('');
-    
+
     // Clear out active chips while the bot generates its answer
     setSuggestions([]);
-    
+
     // 2. Trigger Typing Animation State
     setIsTyping(true);
 
@@ -152,7 +152,7 @@ const ChatWidget = () => {
               <g 
                 fill="none" 
                 stroke="currentColor" 
-                strokeWidth="11" 
+                strokeWidth="6.5" 
                 strokeLinecap="round" 
                 strokeLinejoin="round"
               >
@@ -235,3 +235,10 @@ const ChatWidget = () => {
 };
 
 export default ChatWidget;
+
+
+
+
+
+
+
