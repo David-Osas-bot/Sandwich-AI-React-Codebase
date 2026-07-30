@@ -1,4 +1,6 @@
+
 // import React, { useEffect, useRef, useState } from "react";
+// import { CATS, CAT_ORDER, MODULES } from '../data/modules.js';
 
 // const NAV_DATA = [
 //   {
@@ -38,43 +40,74 @@
 //         ],
 //       },
 //     ],
+//     foot: "One connected system — every module shares real-time data.",
+//     footCta: "See all modules →",
 //   },
 //   {
 //     key: "solutions",
 //     label: "Solutions",
 //     eyebrow: "One platform, two experiences",
-//     groups: [
+//     solutions: [
 //       {
 //         heading: "Mobile App",
 //         sub: "Offline-first, for every staff role on the floor — every shift.",
-//         links: ["Procurement", "Inventory", "Kitchen & Processing", "Customer Service", "Custom Roles"],
+//         tags: ["Procurement", "Inventory", "Kitchen & Processing", "Customer Service", "Custom Roles"],
+//         icon: (
+//           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+//             <rect x="7" y="2" width="10" height="20" rx="2" />
+//             <path d="M11 18h2" />
+//           </svg>
+//         ),
 //       },
 //       {
 //         heading: "Web Dashboard",
 //         sub: "Full-screen oversight, from any browser, any device.",
-//         links: ["Super Admin", "Branch Manager", "Finance Officer", "HR"],
+//         tags: ["Super Admin", "Branch Manager", "Finance Officer", "HR"],
+//         icon: (
+//           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+//             <rect x="2" y="4" width="20" height="13" rx="2" />
+//             <path d="M8 21h8M12 17v4" />
+//           </svg>
+//         ),
 //       },
 //     ],
+//     foot: "Same ledger, right-sized for how each role actually works.",
+//     footCta: "See how it splits →",
 //   },
 //   {
 //     key: "resources",
 //     label: "Resources",
 //     eyebrow: "Learn Sandwich, your way",
-//     groups: [
+//     resources: [
 //       {
-//         heading: "Video Tutorials",
-//         sub: "Walkthroughs of every module.",
-//         links: [],
+//         title: "Video Tutorials",
+//         desc: "Walkthroughs of every module.",
+//         icon: (
+//           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+//             <rect x="3" y="5" width="18" height="14" rx="2" />
+//             <path d="M10 9l5 3-5 3z" />
+//           </svg>
+//         ),
 //       },
 //       {
-//         heading: "Setup Guides",
-//         sub: "Onboard your team in a day.",
-//         links: [],
+//         title: "Setup Guides",
+//         desc: "Onboard your team in a day.",
+//         icon: (
+//           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+//             <path d="M6 3h9l5 5v13a1 1 0 01-1 1H6a1 1 0 01-1-1V4a1 1 0 011-1z" />
+//             <path d="M9 13h6M9 17h6" />
+//           </svg>
+//         ),
 //       },
 //       {
-//         heading: "Help Center",
-//         sub: "Setup, billing & integrations.",
-//         links: [],
+//         title: "Help Center",
+//         desc: "Setup, billing & integrations.",
+//         icon: (
+//           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+//             <circle cx="12" cy="12" r="9" />
+//             <path d="M9.5 9a2.5 2.5 0 015 .5c0 1.7-2.3 1.8-2.5 3.5M12 17h.01" />
+//           </svg>
+//         ),
 //       },
 //     ],
 //   },
@@ -85,6 +118,7 @@
 //   const [openAccordion, setOpenAccordion] = useState(null);
 //   const panelRef = useRef(null);
 //   const toggleRef = useRef(null);
+//   const [open, setOpen] = useState(null);
 
 //   // Lock body scroll while drawer is open
 //   useEffect(() => {
@@ -108,6 +142,23 @@
 //     return () => document.removeEventListener("keydown", handleKeyDown);
 //   }, [menuOpen]);
 
+//   // Belt-and-braces outside click/tap handling (in addition to the scrim),
+//   // in case the panel is ever rendered somewhere the scrim doesn't fully cover.
+//   useEffect(() => {
+//     if (!menuOpen) return;
+//     const handlePointerDown = (e) => {
+//       if (panelRef.current && !panelRef.current.contains(e.target) && toggleRef.current && !toggleRef.current.contains(e.target)) {
+//         setMenuOpen(false);
+//       }
+//     };
+//     document.addEventListener("mousedown", handlePointerDown);
+//     document.addEventListener("touchstart", handlePointerDown);
+//     return () => {
+//       document.removeEventListener("mousedown", handlePointerDown);
+//       document.removeEventListener("touchstart", handlePointerDown);
+//     };
+//   }, [menuOpen]);
+
 //   useEffect(() => {
 //     if (!menuOpen) {
 //       setOpenAccordion(null);
@@ -124,21 +175,36 @@
 //   return (
 //     <header className="site">
 //       <style>{`
-//         /* Hamburger trigger & Broken style */
-//         .hamburger { display: none; position: relative; width: 44px; height: 44px; padding: 0; background: transparent; border: none; cursor: pointer; z-index: 60; -webkit-tap-highlight-color: transparent; align-items: center; justify-content: center; }
+//         /* Hamburger trigger — pinned to the viewport so it always sits ABOVE
+//            the drawer, both closed and open, regardless of header layout/scroll. */
+//         .hamburger {
+//           display: none;
+//           position: fixed;
+//           top: 14px;
+//           right: 16px;
+//           width: 44px;
+//           height: 44px;
+//           padding: 0;
+//           background: #fff;
+//           border: none;
+//           border-radius: 50%;
+//           cursor: pointer;
+//           z-index: 70;
+//           align-items: center;
+//           justify-content: center;
+//           box-shadow: 0 1px 3px rgba(20, 18, 16, 0.12);
+//         }
 //         .hamburger-box { position: relative; display: block; width: 22px; height: 16px; margin: 0 auto; }
 //         .hamburger-line { position: absolute; left: 0; height: 2.5px; border-radius: 2px; background: #dc2626; transition: transform 0.35s cubic-bezier(0.65, 0, 0.35, 1), opacity 0.25s ease, top 0.35s cubic-bezier(0.65, 0, 0.35, 1), width 0.35s cubic-bezier(0.65, 0, 0.35, 1); }
 
-//         /* Staggered / Broken Initial Lengths */
 //         .line-top { top: 0; width: 22px; }
 //         .line-mid { top: 7px; width: 14px; left: 8px; }
 //         .line-bottom { top: 14px; width: 18px; }
 
-//         /* Open State (Forms clean X) */
 //         .hamburger.is-open .line-top { top: 7px; width: 22px; transform: rotate(45deg); }
 //         .hamburger.is-open .line-mid { opacity: 0; width: 0; left: 11px; }
 //         .hamburger.is-open .line-bottom { top: 7px; width: 22px; transform: rotate(-45deg); }
-//         .hamburger:focus-visible { outline: 2px solid #dc2626; outline-offset: 4px; border-radius: 8px; }
+//         .hamburger:focus-visible { outline: 2px solid #dc2626; outline-offset: 4px; }
 
 //         /* Scrim & Panel Drawer */
 //         .mobile-scrim { position: fixed; inset: 0; background: rgba(20, 18, 16, 0.38); backdrop-filter: blur(2px); opacity: 0; pointer-events: none; transition: opacity 0.32s ease; z-index: 50; }
@@ -163,6 +229,26 @@
 //         .mobile-group-sub { font-size: 13.5px; color: rgba(30, 30, 30, 0.62); margin: -4px 0 10px; }
 //         .mobile-link { display: flex; align-items: center; gap: 10px; padding: 9px 0; font-size: 14.5px; color: rgba(30, 30, 30, 0.82); text-decoration: none; }
 
+//         /* Solutions cards (mirrors desktop mega-split) */
+//         .mobile-solution-card { border: 1px solid rgba(30, 30, 30, 0.08); border-radius: 12px; padding: 16px; }
+//         .mobile-solution-head { display: flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 600; color: rgba(20, 18, 16, 0.92); }
+//         .mobile-chip-ico { display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 34px; border-radius: 9px; background: rgba(220, 38, 38, 0.08); color: #dc2626; flex-shrink: 0; }
+//         .mobile-chip-ico.dark { background: rgba(20, 18, 16, 0.06); color: rgba(20, 18, 16, 0.75); }
+//         .mobile-solution-sub { font-size: 13.5px; color: rgba(30, 30, 30, 0.62); margin: 10px 0 12px; }
+//         .mobile-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+//         .mobile-tag { font-size: 12.5px; padding: 5px 10px; border-radius: 999px; background: rgba(30, 30, 30, 0.05); color: rgba(30, 30, 30, 0.72); }
+
+//         /* Resources cards (mirrors desktop mega-grid) */
+//         .mobile-resource-card { display: flex; align-items: flex-start; gap: 12px; padding: 4px 0; }
+//         .mobile-resource-ico { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 9px; background: rgba(220, 38, 38, 0.08); color: #dc2626; flex-shrink: 0; }
+//         .mobile-resource-title { font-size: 14.5px; font-weight: 600; color: rgba(20, 18, 16, 0.9); margin: 0; }
+//         .mobile-resource-desc { font-size: 13px; color: rgba(30, 30, 30, 0.6); margin: 2px 0 0; }
+
+//         /* Shared footer note + cta, mirrors desktop mega-foot */
+//         .mobile-foot { display: flex; flex-direction: column; gap: 8px; padding-top: 14px; border-top: 1px solid rgba(30, 30, 30, 0.08); }
+//         .mobile-foot-note { font-size: 12.5px; color: rgba(30, 30, 30, 0.6); margin: 0; }
+//         .mobile-foot-cta { font-size: 13.5px; font-weight: 600; color: #dc2626; text-decoration: none; }
+
 //         /* Sticky Mobile CTAs */
 //         .mobile-cta { margin-top: auto; padding-top: 20px; border-top: 1px solid rgba(30, 30, 30, 0.08); display: flex; flex-direction: column; gap: 12px; }
 //         .mobile-signin, .mobile-get-started { width: 100%; justify-content: center; text-align: center; }
@@ -173,7 +259,7 @@
 //           .hamburger { display: inline-flex !important; }
 //         }
 //         @media (min-width: 901px) {
-//           .mobile-scrim, .mobile-panel { display: none !important; }
+//           .mobile-scrim, .mobile-panel, .hamburger { display: none !important; }
 //         }
 //         @media (prefers-reduced-motion: reduce) {
 //           .hamburger-line, .mobile-scrim, .mobile-panel, .mobile-accordion-panel, .mobile-accordion-trigger .chev { transition-duration: 0.01ms !important; }
@@ -354,24 +440,25 @@
 //             </svg>
 //           </a>
 //         </div>
-
-//         {/* Mobile hamburger toggle */}
-//         <button
-//           ref={toggleRef}
-//           type="button"
-//           className={`hamburger${menuOpen ? " is-open" : ""}`}
-//           aria-label={menuOpen ? "Close menu" : "Open menu"}
-//           aria-expanded={menuOpen}
-//           aria-controls="mobile-menu"
-//           onClick={() => setMenuOpen((v) => !v)}
-//         >
-//           <span className="hamburger-box">
-//             <span className="hamburger-line line-top"></span>
-//             <span className="hamburger-line line-mid"></span>
-//             <span className="hamburger-line line-bottom"></span>
-//           </span>
-//         </button>
 //       </div>
+
+//       {/* Mobile hamburger / close toggle — fixed to the viewport so it's
+//           always visible above the drawer, in both open and closed states */}
+//       <button
+//         ref={toggleRef}
+//         type="button"
+//         className={`hamburger${menuOpen ? " is-open" : ""}`}
+//         aria-label={menuOpen ? "Close menu" : "Open menu"}
+//         aria-expanded={menuOpen}
+//         aria-controls="mobile-menu"
+//         onClick={() => setMenuOpen((v) => !v)}
+//       >
+//         <span className="hamburger-box">
+//           <span className="hamburger-line line-top"></span>
+//           <span className="hamburger-line line-mid"></span>
+//           <span className="hamburger-line line-bottom"></span>
+//         </span>
+//       </button>
 
 //       {/* Mobile drawer + scrim */}
 //       <div
@@ -408,22 +495,63 @@
 //                   id={`panel-${section.key}`}
 //                   className="mobile-accordion-panel"
 //                   style={{
-//                     maxHeight: openAccordion === section.key ? "1200px" : "0px",
+//                     maxHeight: openAccordion === section.key ? "1400px" : "0px",
 //                   }}
 //                 >
 //                   <div className="mobile-accordion-inner">
 //                     <p className="mobile-eyebrow">{section.eyebrow}</p>
-//                     {section.groups.map((group) => (
-//                       <div className="mobile-group" key={group.heading}>
-//                         <div className="mobile-group-h">{group.heading}</div>
-//                         {group.sub && <p className="mobile-group-sub">{group.sub}</p>}
-//                         {group.links.map((link) => (
-//                           <a href="#" className="mobile-link" key={link}>
-//                             <span className="dot"></span>{link}
-//                           </a>
-//                         ))}
+
+//                     {/* Products: column groups of links, same as desktop */}
+//                     {section.groups &&
+//                       section.groups.map((group) => (
+//                         <div className="mobile-group" key={group.heading}>
+//                           <div className="mobile-group-h">{group.heading}</div>
+//                           {group.sub && <p className="mobile-group-sub">{group.sub}</p>}
+//                           {group.links.map((link) => (
+//                             <a href="#" className="mobile-link" key={link}>
+//                               <span className="dot"></span>{link}
+//                             </a>
+//                           ))}
+//                         </div>
+//                       ))}
+
+//                     {/* Solutions: icon + heading + sub + tag pills, mirrors desktop split */}
+//                     {section.solutions &&
+//                       section.solutions.map((sol) => (
+//                         <div className="mobile-solution-card" key={sol.heading}>
+//                           <div className="mobile-solution-head">
+//                             <span className={`mobile-chip-ico${sol.heading === "Web Dashboard" ? " dark" : ""}`}>
+//                               {sol.icon}
+//                             </span>
+//                             {sol.heading}
+//                           </div>
+//                           <p className="mobile-solution-sub">{sol.sub}</p>
+//                           <div className="mobile-tags">
+//                             {sol.tags.map((tag) => (
+//                               <span className="mobile-tag" key={tag}>{tag}</span>
+//                             ))}
+//                           </div>
+//                         </div>
+//                       ))}
+
+//                     {/* Resources: icon + title + description cards, mirrors desktop grid */}
+//                     {section.resources &&
+//                       section.resources.map((res) => (
+//                         <div className="mobile-resource-card" key={res.title}>
+//                           <span className="mobile-resource-ico">{res.icon}</span>
+//                           <div>
+//                             <p className="mobile-resource-title">{res.title}</p>
+//                             <p className="mobile-resource-desc">{res.desc}</p>
+//                           </div>
+//                         </div>
+//                       ))}
+
+//                     {section.foot && (
+//                       <div className="mobile-foot">
+//                         <p className="mobile-foot-note">{section.foot}</p>
+//                         <a href="#" className="mobile-foot-cta">{section.footCta}</a>
 //                       </div>
-//                     ))}
+//                     )}
 //                   </div>
 //                 </div>
 //               </div>
@@ -473,45 +601,26 @@
 
 
 import React, { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
+import { CATS, CAT_ORDER, MODULES } from '../data/modules.js';
+
+// Build the Products groups straight from modules.js — this is the single
+// source of truth for both the desktop mega menu and the mobile accordion,
+// so a module added there shows up in the nav automatically with a real
+// working link, instead of a hand-typed label pointing at "#".
+const PRODUCT_GROUPS = CAT_ORDER.map((catKey) => ({
+  heading: CATS[catKey],
+  links: Object.entries(MODULES)
+    .filter(([, m]) => m.cat === catKey)
+    .map(([slug, m]) => ({ slug, title: m.title })),
+}));
 
 const NAV_DATA = [
   {
     key: "products",
     label: "Products",
     eyebrow: "15+ modules, one real-time ledger — all live in production",
-    groups: [
-      {
-        heading: "Operations",
-        links: [
-          "Procurement & Purchase Orders",
-          "Inventory & Stock Control",
-          "Supplier Management",
-          "Recipe Management & AI Yield Calc",
-          "Kitchen, Central Production & KDS",
-          "Inter-Branch Transfers & Logistics",
-        ],
-      },
-      {
-        heading: "Money & Growth",
-        links: [
-          "Accounting & Finance",
-          "Budgets & Cost Analytics",
-          "AI Forecasting & Predictive Ordering",
-          "Payments & Wallets",
-          "Reports & Business Intelligence",
-        ],
-      },
-      {
-        heading: "Front of House & People",
-        links: [
-          "POS & Table Management",
-          "Online Ordering & Aggregators",
-          "CRM, Loyalty & Gift Cards",
-          "Team Chat, RBAC & Custom Roles",
-          "Branches & Multi-Location",
-        ],
-      },
-    ],
+    groups: PRODUCT_GROUPS,
     foot: "One connected system — every module shares real-time data.",
     footCta: "See all modules →",
   },
@@ -590,6 +699,7 @@ const Header = () => {
   const [openAccordion, setOpenAccordion] = useState(null);
   const panelRef = useRef(null);
   const toggleRef = useRef(null);
+  const [open, setOpen] = useState(null);
 
   // Lock body scroll while drawer is open
   useEffect(() => {
@@ -638,6 +748,9 @@ const Header = () => {
       panelRef.current?.querySelector("a,button")?.focus();
     }
   }, [menuOpen]);
+
+  // Close the mobile drawer whenever a real navigation happens from inside it
+  const closeMenu = () => setMenuOpen(false);
 
   const toggleAccordion = (key) => {
     setOpenAccordion((prev) => (prev === key ? null : key));
@@ -739,12 +852,12 @@ const Header = () => {
       `}</style>
 
       <div className="wrap nav">
-        <a href="#" className="logo">
+        <Link to="/" className="logo">
           <svg className="mark" style={{ width: 18, height: 18, marginRight: 8, verticalAlign: "middle" }}>
             <use href="#emblem" />
           </svg>
           Sandwich
-        </a>
+        </Link>
 
         <nav className="navlinks">
           {/* Products Dropdown */}
@@ -758,39 +871,24 @@ const Header = () => {
             <div className="mega mega-products">
               <div className="mega-eyebrow">15+ modules, one real-time ledger — all live in production</div>
               <div className="mega-cols">
-                <div>
-                  <div className="mega-col-h">Operations</div>
-                  <a href="#" className="mega-link"><span className="dot"></span>Procurement &amp; Purchase Orders</a>
-                  <a href="#" className="mega-link"><span className="dot"></span>Inventory &amp; Stock Control</a>
-                  <a href="#" className="mega-link"><span className="dot"></span>Supplier Management</a>
-                  <a href="#" className="mega-link"><span className="dot"></span>Recipe Management &amp; AI Yield Calc</a>
-                  <a href="#" className="mega-link"><span className="dot"></span>Kitchen, Central Production &amp; KDS</a>
-                  <a href="#" className="mega-link"><span className="dot"></span>Inter-Branch Transfers &amp; Logistics</a>
-                </div>
-                <div>
-                  <div className="mega-col-h">Money &amp; Growth</div>
-                  <a href="#" className="mega-link"><span className="dot"></span>Accounting &amp; Finance</a>
-                  <a href="#" className="mega-link"><span className="dot"></span>Budgets &amp; Cost Analytics</a>
-                  <a href="#" className="mega-link"><span className="dot"></span>AI Forecasting &amp; Predictive Ordering</a>
-                  <a href="#" className="mega-link"><span className="dot"></span>Payments &amp; Wallets</a>
-                  <a href="#" className="mega-link"><span className="dot"></span>Reports &amp; Business Intelligence</a>
-                </div>
-                <div>
-                  <div className="mega-col-h">Front of House &amp; People</div>
-                  <a href="#" className="mega-link"><span className="dot"></span>POS &amp; Table Management</a>
-                  <a href="#" className="mega-link"><span className="dot"></span>Online Ordering &amp; Aggregators</a>
-                  <a href="#" className="mega-link"><span className="dot"></span>CRM, Loyalty &amp; Gift Cards</a>
-                  <a href="#" className="mega-link"><span className="dot"></span>Team Chat, RBAC &amp; Custom Roles</a>
-                  <a href="#" className="mega-link"><span className="dot"></span>Branches &amp; Multi-Location</a>
-                </div>
+                {PRODUCT_GROUPS.map((group) => (
+                  <div key={group.heading}>
+                    <div className="mega-col-h">{group.heading}</div>
+                    {group.links.map((link) => (
+                      <Link to={`/module/${link.slug}`} className="mega-link" key={link.slug}>
+                        <span className="dot"></span>{link.title}
+                      </Link>
+                    ))}
+                  </div>
+                ))}
               </div>
               <div className="mega-foot">
                 <span style={{ fontSize: "12.5px", color: "rgba(30,30,30,0.6)" }}>
                   One connected system — every module shares real-time data.
                 </span>
-                <a href="#" className="cta-link" style={{ display: "inline-flex", alignItems: "center", gap: 4 }}>
+                <Link to="/" className="cta-link" style={{ display: "inline-flex", alignItems: "center", gap: 4 }}>
                   See all modules →
-                </a>
+                </Link>
               </div>
             </div>
           </div>
@@ -979,9 +1077,14 @@ const Header = () => {
                           <div className="mobile-group-h">{group.heading}</div>
                           {group.sub && <p className="mobile-group-sub">{group.sub}</p>}
                           {group.links.map((link) => (
-                            <a href="#" className="mobile-link" key={link}>
-                              <span className="dot"></span>{link}
-                            </a>
+                            <Link
+                              to={`/module/${link.slug}`}
+                              className="mobile-link"
+                              key={link.slug}
+                              onClick={closeMenu}
+                            >
+                              <span className="dot"></span>{link.title}
+                            </Link>
                           ))}
                         </div>
                       ))}
@@ -1020,7 +1123,13 @@ const Header = () => {
                     {section.foot && (
                       <div className="mobile-foot">
                         <p className="mobile-foot-note">{section.foot}</p>
-                        <a href="#" className="mobile-foot-cta">{section.footCta}</a>
+                        {section.key === "products" ? (
+                          <Link to="/" className="mobile-foot-cta" onClick={closeMenu}>
+                            {section.footCta}
+                          </Link>
+                        ) : (
+                          <a href="#" className="mobile-foot-cta">{section.footCta}</a>
+                        )}
                       </div>
                     )}
                   </div>
@@ -1060,3 +1169,6 @@ const Header = () => {
 };
 
 export default Header;
+
+
+
