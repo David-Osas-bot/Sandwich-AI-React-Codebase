@@ -1,43 +1,24 @@
 import React, { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
+import { CATS, CAT_ORDER, MODULES } from '../data/modules.js';
+
+// Build the Products groups straight from modules.js — this is the single
+// source of truth for both the desktop mega menu and the mobile accordion,
+// so a module added there shows up in the nav automatically with a real
+// working link, instead of a hand-typed label pointing at "#".
+const PRODUCT_GROUPS = CAT_ORDER.map((catKey) => ({
+  heading: CATS[catKey],
+  links: Object.entries(MODULES)
+    .filter(([, m]) => m.cat === catKey)
+    .map(([slug, m]) => ({ slug, title: m.title })),
+}));
 
 const NAV_DATA = [
   {
     key: "products",
     label: "Products",
     eyebrow: "15+ modules, one real-time ledger — all live in production",
-    groups: [
-      {
-        heading: "Operations",
-        links: [
-          "Procurement & Purchase Orders",
-          "Inventory & Stock Control",
-          "Supplier Management",
-          "Recipe Management & AI Yield Calc",
-          "Kitchen, Central Production & KDS",
-          "Inter-Branch Transfers & Logistics",
-        ],
-      },
-      {
-        heading: "Money & Growth",
-        links: [
-          "Accounting & Finance",
-          "Budgets & Cost Analytics",
-          "AI Forecasting & Predictive Ordering",
-          "Payments & Wallets",
-          "Reports & Business Intelligence",
-        ],
-      },
-      {
-        heading: "Front of House & People",
-        links: [
-          "POS & Table Management",
-          "Online Ordering & Aggregators",
-          "CRM, Loyalty & Gift Cards",
-          "Team Chat, RBAC & Custom Roles",
-          "Branches & Multi-Location",
-        ],
-      },
-    ],
+    groups: PRODUCT_GROUPS,
     foot: "One connected system — every module shares real-time data.",
     footCta: "See all modules →",
   },
@@ -116,6 +97,7 @@ const Header = () => {
   const [openAccordion, setOpenAccordion] = useState(null);
   const panelRef = useRef(null);
   const toggleRef = useRef(null);
+  const [open, setOpen] = useState(null);
 
   // Lock body scroll while drawer is open
   useEffect(() => {
@@ -164,6 +146,9 @@ const Header = () => {
       panelRef.current?.querySelector("a,button")?.focus();
     }
   }, [menuOpen]);
+
+  // Close the mobile drawer whenever a real navigation happens from inside it
+  const closeMenu = () => setMenuOpen(false);
 
   const toggleAccordion = (key) => {
     setOpenAccordion((prev) => (prev === key ? null : key));
@@ -265,12 +250,12 @@ const Header = () => {
       `}</style>
 
       <div className="wrap nav">
-        <a href="#" className="logo">
+        <Link to="/" className="logo">
           <svg className="mark" style={{ width: 18, height: 18, marginRight: 8, verticalAlign: "middle" }}>
             <use href="#emblem" />
           </svg>
           Sandwich
-        </a>
+        </Link>
 
         <nav className="navlinks">
           {/* Products Dropdown */}
@@ -314,9 +299,9 @@ const Header = () => {
                 <span style={{ fontSize: "12.5px", color: "rgba(30,30,30,0.6)" }}>
                   One connected system — every module shares real-time data.
                 </span>
-                <a href="#" className="cta-link" style={{ display: "inline-flex", alignItems: "center", gap: 4 }}>
+                <Link to="/" className="cta-link" style={{ display: "inline-flex", alignItems: "center", gap: 4 }}>
                   See all modules →
-                </a>
+                </Link>
               </div>
             </div>
           </div>
@@ -505,9 +490,14 @@ const Header = () => {
                           <div className="mobile-group-h">{group.heading}</div>
                           {group.sub && <p className="mobile-group-sub">{group.sub}</p>}
                           {group.links.map((link) => (
-                            <a href="#" className="mobile-link" key={link}>
-                              <span className="dot"></span>{link}
-                            </a>
+                            <Link
+                              to={`/module/${link.slug}`}
+                              className="mobile-link"
+                              key={link.slug}
+                              onClick={closeMenu}
+                            >
+                              <span className="dot"></span>{link.title}
+                            </Link>
                           ))}
                         </div>
                       ))}
@@ -546,7 +536,13 @@ const Header = () => {
                     {section.foot && (
                       <div className="mobile-foot">
                         <p className="mobile-foot-note">{section.foot}</p>
-                        <a href="#" className="mobile-foot-cta">{section.footCta}</a>
+                        {section.key === "products" ? (
+                          <Link to="/" className="mobile-foot-cta" onClick={closeMenu}>
+                            {section.footCta}
+                          </Link>
+                        ) : (
+                          <a href="#" className="mobile-foot-cta">{section.footCta}</a>
+                        )}
                       </div>
                     )}
                   </div>
@@ -586,3 +582,6 @@ const Header = () => {
 };
 
 export default Header;
+
+
+
