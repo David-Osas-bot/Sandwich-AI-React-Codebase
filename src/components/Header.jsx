@@ -270,29 +270,18 @@ const Header = () => {
               <div className="mega-eyebrow">15+ modules, one real-time ledger — all live in production</div>
               <div className="mega-cols">
                 <div>
-                  <div className="mega-col-h">Operations</div>
-                  <a href="#module" className="mega-link"><span className="dot"></span>Procurement &amp; Purchase Orders</a>
-                  <a href="#" className="mega-link"><span className="dot"></span>Inventory &amp; Stock Control</a>
-                  <a href="#" className="mega-link"><span className="dot"></span>Supplier Management</a>
-                  <a href="#" className="mega-link"><span className="dot"></span>Recipe Management &amp; AI Yield Calc</a>
-                  <a href="#" className="mega-link"><span className="dot"></span>Kitchen, Central Production &amp; KDS</a>
-                  <a href="#" className="mega-link"><span className="dot"></span>Inter-Branch Transfers &amp; Logistics</a>
-                </div>
-                <div>
-                  <div className="mega-col-h">Money &amp; Growth</div>
-                  <a href="#" className="mega-link"><span className="dot"></span>Accounting &amp; Finance</a>
-                  <a href="#" className="mega-link"><span className="dot"></span>Budgets &amp; Cost Analytics</a>
-                  <a href="#" className="mega-link"><span className="dot"></span>AI Forecasting &amp; Predictive Ordering</a>
-                  <a href="#" className="mega-link"><span className="dot"></span>Payments &amp; Wallets</a>
-                  <a href="#" className="mega-link"><span className="dot"></span>Reports &amp; Business Intelligence</a>
-                </div>
-                <div>
-                  <div className="mega-col-h">Front of House &amp; People</div>
-                  <a href="#" className="mega-link"><span className="dot"></span>POS &amp; Table Management</a>
-                  <a href="#" className="mega-link"><span className="dot"></span>Online Ordering &amp; Aggregators</a>
-                  <a href="#" className="mega-link"><span className="dot"></span>CRM, Loyalty &amp; Gift Cards</a>
-                  <a href="#" className="mega-link"><span className="dot"></span>Team Chat, RBAC &amp; Custom Roles</a>
-                  <a href="#" className="mega-link"><span className="dot"></span>Branches &amp; Multi-Location</a>
+                  <div className="mega-cols">
+                    {PRODUCT_GROUPS.map((group) => (
+                      <div key={group.heading}>
+                        <div className="mega-col-h">{group.heading}</div>
+                        {group.links.map((link) => (
+                          <Link key={link.slug} to={`/module/${link.slug}`} className="mega-link">
+                            <span className="dot"></span>{link.title}
+                          </Link>
+                        ))}
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
               <div className="mega-foot">

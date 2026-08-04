@@ -1,5 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
-
+/* src/index.css */
+h1,
+h2,
+h3,
+.font-heading {
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    /* Fredoka looks tight and punchy with subtle negative tracking */
+}
 
 :root {
     --cream: #FFFAEB;
@@ -114,16 +122,16 @@ h3 {
 
 /* Base state (hidden) */
 .reveal {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
-              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+        transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* Active state (triggered when visible) */
 .reveal.active {
-  opacity: 1;
-  transform: translateY(0);
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* ===== "Liquid Glass" utilities =====
@@ -532,9 +540,15 @@ header.site {
 }
 
 /* mega — categorized module columns (Products) */
-.mega-cols {
+/* .mega-cols {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    gap: 6px 26px;
+} */
+/* was: grid-template-columns: repeat(3, 1fr); */
+.mega-cols {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(230px, 1fr));
     gap: 6px 26px;
 }
 
@@ -1243,7 +1257,7 @@ header.site {
 .logos-section,
 .logos-section .lg,
 .logos-section .int-pill {
-  font-family: 'Plus Jakarta Sans', sans-serif !important;
+    font-family: 'Plus Jakarta Sans', sans-serif !important;
 }
 
 .logos-label {
@@ -2537,15 +2551,18 @@ footer {
 
 /* Force the marquee text to match the heading font */
 .logos-section .lg {
-  /* Note: If your h1 uses a different font name than Plus Jakarta Sans, swap it here! */
-  /* font-family: 'Plus Jakarta Sans', sans-serif !important;  */
-  font-family: 'Fredoka', sans-serif !important; /* Fallback to Fredoka if Plus Jakarta Sans isn't available */
-  font-weight: 800 !important; /* Makes it heavy and thick like the heading */
-  letter-spacing: -0.02em; /* Tightens it up slightly, matching the h1 style */
+    /* Note: If your h1 uses a different font name than Plus Jakarta Sans, swap it here! */
+    /* font-family: 'Plus Jakarta Sans', sans-serif !important;  */
+    font-family: 'Fredoka', sans-serif !important;
+    /* Fallback to Fredoka if Plus Jakarta Sans isn't available */
+    font-weight: 800 !important;
+    /* Makes it heavy and thick like the heading */
+    letter-spacing: -0.02em;
+    /* Tightens it up slightly, matching the h1 style */
 }
 
 /* Slightly lighter weight for the smaller integration pills */
 .logos-section .int-pill {
-  font-family: 'Plus Jakarta Sans', sans-serif !important;
-  font-weight: 600 !important; 
+    font-family: 'Plus Jakarta Sans', sans-serif !important;
+    font-weight: 600 !important;
 }
