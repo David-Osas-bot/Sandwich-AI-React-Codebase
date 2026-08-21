@@ -38,7 +38,7 @@ export const MODULES = {
         descprocurementIntelligence:
             "Procurement data becomes more valuable when it helps you make the next decision. Sandwich gives you a broader view of procurement spend and performance—by category, by supplier, and over time.",
 
-        descSupplierPerformance: 
+        descSupplierPerformance:
             "The real cost of a supplier is revealed by what happens after the order is placed. Sandwich gives your procurement team visibility into supplier performance across delivery, spend, and quality-related activity.",
         images: {
             overview: { alt: "Procurement overview dashboard" },
@@ -189,7 +189,6 @@ export const MODULES = {
             ["Finance teams", "monitor spend against budgets"],
             ["Operations leaders", "analyze delivery, spend, QC, and supplier performance"],
         ],
-        integrations: ["Paystack", "QuickBooks", "Xero", "WhatsApp Business"],
         faqs: [
             ["Can procurement requests be approved or rejected?", "Yes — procurement requests can be reviewed and approved or rejected by authorized managers."],
             ["Can purchase orders go through an approval process?", "Yes — purchase orders can be submitted for approval, approved, rejected, and tracked through their approval history."],
@@ -209,42 +208,160 @@ export const MODULES = {
         cat: "ops",
         icon: "box",
         title: "Inventory & Stock Control",
-        tagline: "Real-time stock levels across every branch, with blind counts and expiry tracking that catch shrinkage early.",
+        tagline: "Know what you have, where you have it, and how much it really is.",
         stats: [
-            ["80%", "reduction in stock discrepancies within 60 days"],
-            ["Live", "stock levels synced across every branch"],
-            ["Auto", "reorder alerts at your set thresholds"],
+            ["1", "inventory system across items, packaging, and branches"],
+            ["3", "levels of control: item, packaging, and branch stock"],
+            ["360°", "visibility from individual stock records to organization-wide inventory"],
         ],
-        desc: "Stock control validates every delivery, tracks expiry down to the batch, and gives you blind counts so nobody can count to the number they expect.",
+        desc:
+            "Inventory becomes difficult to manage when the same item can exist across different branches, quantities, packaging formats, and stock records. Sandwich gives your team a structured inventory system for managing items, defining how they are packaged and measured, assigning them to the right branches, and keeping branch-level stock accurate.",
+
+        images: {
+            overview: { alt: "Inventory overview dashboard" },
+            workflow: { alt: "Inventory lifecycle" },
+            items: { alt: "Inventory items list/detail screen" },
+            packaging: { alt: "Packaging configuration screen" },
+            branchStock: { alt: "Branch stock dashboard" },
+            branchAssignment: { alt: "Branch assignment interface" },
+            stockControl: { alt: "Stock adjustment/detail screen" },
+            intelligence: { alt: "Organization-wide inventory summary" },
+            experiences: { alt: "Mobile inventory + web inventory screens side by side" },
+            dataFlow: { alt: "Inventory data relationship visual" },
+        },
+
         features: [
-            ["box", "Blind stock counts", "Staff count without seeing the expected number, protecting count accuracy."],
-            ["chart", "Reorder alerts", "Automatic low-stock flags feed straight into procurement's draft POs."],
-            ["truck", "Expiry & batch tracking", "FIFO suggestions and expiry alerts reduce spoilage before it happens."],
-            ["chef", "Wastage logging", "One-tap waste capture with reason codes, rolled into cost reporting."],
+            ["box", "Inventory item management", "Create, update, organize, lock, and manage inventory items from one centralized system."],
+            ["map", "Branch-level inventory", "Control which branches can use an inventory item and maintain separate stock records for each branch."],
+            ["transfer", "Packaging & unit conversion", "Define multiple packaging configurations for an item and convert quantities between packaging formats or back to the item's base unit."],
+            ["chart", "Stock control", "Manage quantities, reorder levels, cost prices, expiry information, and stock adjustments at branch level."],
+            ["check", "Inventory protection", "Lock inventory items or branch stock records when changes should be restricted, and control whether negative stock is allowed."],
         ],
-        ai: [["Variance Detection", "Flags unusual stock movements or count discrepancies for review."]],
+
         steps: [
-            ["Receive", "Deliveries post to stock only after GRN matching is confirmed."],
-            ["Track", "Batches, expiry dates, and locations stay visible in real time."],
-            ["Count", "Scheduled blind counts reconcile physical stock to system stock."],
-            ["Reorder", "Low-stock items generate draft purchase requests automatically."],
+            ["Define your inventory", "Create the items your operation purchases, stores, counts, and consumes."],
+            ["Set how it's packaged", "Define the different ways each item can be purchased, received, counted, or otherwise handled—and designate the appropriate default configuration for each context."],
+            ["Assign it to branches", "Make inventory items available to specific branches or across the organization, with the option to exclude individual branches."],
+            ["Manage branch stock", "Maintain stock records for each branch, including quantity, reorder level, cost price, expiry information, and other stock details."],
+            ["Keep quantities under control", "Adjust stock when necessary, monitor negative quantities, and lock records when changes need to be restricted."],
         ],
+
+        // Six deep-dive subsections rendered between "Step by step" and
+        // "One system, two experiences" — matches the PDF's dedicated
+        // sections for Inventory Items, Packaging & Units, Branch Stock,
+        // Branch Assignment, Stock Control, and Inventory Intelligence.
+        deepDives: [
+            {
+                field: "items",
+                eyebrow: "Inventory Items",
+                title: "One source of truth for everything you stock.",
+                desc: "Create and manage your inventory catalog without losing control as your operation grows.",
+                features: [
+                    ["Create and manage items", "Add new inventory items and update their information as your operation changes."],
+                    ["Bulk upload", "Import inventory items using Excel or CSV instead of creating every item manually."],
+                    ["Control item status", "Lock inventory items when they should no longer be changed, and unlock them when updates are needed."],
+                    ["See what's available where", "View branch assignments and filter inventory items based on branch visibility."],
+                ],
+            },
+            {
+                field: "packaging",
+                eyebrow: "Packaging & Units",
+                title: "Stop losing accuracy between cartons, packs, and individual units.",
+                desc: "The same inventory item doesn't always move through your operation in the same unit. Sandwich lets you define multiple packaging configurations for an item and establish the appropriate defaults for different inventory contexts.",
+                features: [
+                    ["Multiple configurations", "Define more than one packaging configuration for the same inventory item."],
+                    ["Context-specific defaults", "Set default packaging configurations for different contexts, including purchasing, receiving, and counting."],
+                    ["Convert quantities", "Convert quantities between packaging configurations or between a packaging configuration and the item's base unit."],
+                    ["Keep quantities consistent", "Use defined conversions instead of relying on manual calculations when moving between different ways of measuring the same item."],
+                ],
+            },
+            {
+                field: "branchStock",
+                eyebrow: "Branch Stock",
+                title: "See what's actually on hand at every branch.",
+                desc: "An inventory item is only useful when you know how much of it is available where it matters. Sandwich maintains stock records at branch level, giving your team a clearer view of inventory across individual locations and the organization as a whole.",
+                features: [
+                    ["Branch-level quantities", "Maintain individual stock records for each branch."],
+                    ["Stock adjustments", "Adjust stock quantities when inventory records need to be corrected."],
+                    ["Reorder visibility", "Store reorder levels against branch stock records so teams can identify when stock needs attention."],
+                    ["Cost & expiry", "Keep cost price and expiry information attached to the relevant stock record."],
+                    ["Negative stock controls", "Choose whether negative stock is allowed for individual branch stock records and identify records currently below zero."],
+                ],
+            },
+            {
+                field: "branchAssignment",
+                eyebrow: "Branch Assignment",
+                title: "Give every branch the inventory it actually needs.",
+                desc: "Not every location needs every item. Sandwich lets you control which branches an inventory item is assigned to, whether it should be available across all branches, and which locations should be excluded.",
+                features: [
+                    ["Assign specific branches", "Make an item available only to the locations that need it."],
+                    ["Assign across the organization", "Assign an inventory item to all branches when it should be available everywhere."],
+                    ["Exclude locations", "Keep an item organization-wide while excluding branches where it isn't relevant."],
+                    ["See assignment status", "Review which branches currently have access to each inventory item."],
+                ],
+            },
+            {
+                field: "stockControl",
+                eyebrow: "Stock Control",
+                title: "Make every adjustment count.",
+                desc: "Stock records change. What matters is having a controlled way to update them. Sandwich gives your team the tools to adjust branch stock while keeping important controls around what can and cannot be changed.",
+                features: [
+                    ["Adjust quantities", "Correct or update stock quantities at branch level when necessary."],
+                    ["Lock sensitive records", "Lock branch stock records to restrict further changes."],
+                    ["Control negative stock", "Allow or disallow negative quantities for individual stock records."],
+                    ["Identify negative inventory", "Use the negative-stock report to quickly find records where quantities have fallen below zero."],
+                ],
+            },
+            {
+                field: "intelligence",
+                eyebrow: "Inventory Intelligence",
+                title: "See inventory from one branch—or the whole operation.",
+                desc: "When inventory is spread across locations, managers need more than individual stock records. Sandwich provides both branch-level summaries and organization-wide inventory visibility, making it easier to understand the state of stock across the operation.",
+                features: [
+                    ["Branch summaries", "Get a consolidated view of inventory for an individual branch."],
+                    ["Organization summary", "See inventory information across the entire organization."],
+                    ["Filter by branch", "Focus on the inventory available to a specific location."],
+                    ["Find exceptions", "Surface locked stock and negative-stock records that may require attention."],
+                ],
+            },
+        ],
+
         accessMobile: [
-            ["Inventory staff", "perform blind counts, scan barcodes and QR labels"],
-            ["Kitchen staff", "log waste and pull stock for prep"],
-            ["Any custom role", "view stock relevant to their department only"],
+            ["Branch teams", "work with inventory relevant to their location"],
+            ["Stock teams", "manage or update stock information as part of daily operations"],
+            ["Operational users", "work with the inventory items assigned to their branch"],
         ],
         accessWeb: [
-            ["Branch Manager", "reviews count variances and approves write-offs"],
-            ["Super Admin", "benchmarks stock accuracy across branches"],
-            ["Finance Officer", "values inventory for daily P&L"],
+            ["Managers", "review branch inventory and stock summaries"],
+            ["Operations teams", "manage inventory items, branch assignments, and packaging configurations"],
+            ["Administrators", "maintain organization-wide inventory visibility and controls"],
         ],
+
+        connected: [
+            ["box", "Items", "Define the products and materials your operation manages."],
+            ["transfer", "Packaging", "Translate between the different ways an item is purchased, received, or counted."],
+            ["map", "Branches", "Control where each inventory item is available."],
+            ["chart", "Stock", "Track quantities and stock details at the branch level."],
+            ["globe", "Organization", "Bring branch-level inventory into a broader operational view."],
+        ],
+
         integrations: ["Paystack", "QuickBooks", "Xero"],
+
         faqs: [
-            ["How does blind counting work?", "Staff enter what they physically count without seeing the expected system quantity, and variances are reconciled afterward by a manager."],
-            ["Does it track expiry by batch?", "Yes — each received batch carries its own expiry date, and the system surfaces FIFO pick suggestions and expiry alerts."],
+            ["Can I assign an inventory item to specific branches?", "Yes — inventory items can be assigned to selected branches, all branches, or all branches with specific exclusions."],
+            ["Can I use different packaging configurations for the same item?", "Yes — multiple packaging configurations can be created for an inventory item."],
+            ["Can packaging configurations be converted?", "Yes — Sandwich can convert quantities between packaging configurations or between a packaging configuration and the item's base unit."],
+            ["Can I have different default packaging configurations?", "Yes — default packaging configurations can be defined for different contexts, including purchasing, receiving, and counting."],
+            ["Can I upload inventory items in bulk?", "Yes — inventory items can be bulk uploaded using Excel or CSV."],
+            ["Can I manage stock separately for each branch?", "Yes — branch stock records are maintained at the branch level, allowing stock details to be managed independently across locations."],
+            ["Can stock quantities be adjusted?", "Yes — branch stock quantities can be adjusted when inventory records need to be corrected or updated."],
+            ["Can I set reorder levels?", "Yes — reorder-level information can be maintained on branch stock records."],
+            ["Can I control negative stock?", "Yes — negative stock can be allowed or disallowed for individual branch stock records, and the system provides a report of records with negative quantities."],
+            ["Can inventory records be locked?", "Yes — both inventory items and branch stock records can be locked and unlocked."],
+            ["Can I see inventory across the whole organization?", "Yes — Sandwich provides an organization-wide inventory summary as well as branch-specific inventory summaries."],
         ],
-        related: ["procurement", "kitchen", "transfers"],
+
+        related: [ "procurement", "kitchen", "budgets"],
     },
 
     suppliers: {
@@ -329,8 +446,8 @@ export const MODULES = {
     kitchen: {
         cat: "ops",
         icon: "chef",
-        title: "Kitchen, Central Production & KDS",
-        tagline: "Orders route straight to the right station, with a live 3D view of what's cooking across the floor.",
+        title: "Kitchen & Central Production",
+        tagline: "Turn inventory into production. Manage preparation and central kitchen operations with the stock information your teams depend on.",
         stats: [
             ["30%", "faster order-to-service time"],
             ["Live", "kitchen display routing by station"],
@@ -444,7 +561,7 @@ export const MODULES = {
         cat: "money",
         icon: "chart",
         title: "Budgets & Cost Analytics",
-        tagline: "Set a budget per branch, per category, and see the variance the moment it starts to drift.",
+        tagline: "Connect inventory costs with the bigger financial picture and understand how operational decisions affect your numbers.",
         stats: [
             ["Live", "budget vs actual by branch and category"],
             ["Auto", "food cost ratio tracked against target"],

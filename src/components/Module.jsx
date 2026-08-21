@@ -906,11 +906,10 @@ const Module = () => {
                 <section className="mod-section mod-centered">
                     <div className="wrap">
                         <div className="mod-eyebrow">One system, two experiences</div>
-                        <h2 className="mod-h2">{m.title.split("&")[0].trim()} wherever the work happens.</h2>
+                        <h2 className="mod-h2">{m.title.split("&")[0].trim()} where your operation needs it.</h2>
                         <p className="mod-section-lede">
-                            The workflow shouldn't stop at the dashboard. Give
-                            operational teams a way to capture activity where it happens, while
-                            managers get the broader visibility they need to stay in control.
+                            Inventory management happens at the point where stock is stored, handled, and
+                            counted—but managers also need a broader view of what's happening across branches.
                         </p>
 
                         <div className="mod-split">
@@ -959,11 +958,14 @@ const Module = () => {
                 <section className="mod-section mod-centered">
                     <div className="wrap">
                         <div className="mod-eyebrow">Connected</div>
-                        <h2 className="mod-h2">{m.title.split("&")[0].trim()} doesn't work in isolation.</h2>
+                        <h2 className="mod-h2">One {m.title.split("&")[0].trim()} record. Multiple ways to work with it.</h2>
                         <p className="mod-section-lede" style={{ marginBottom: 32 }}>
-                            Every action here creates information that can support the next
-                            decision, feeding budgets, spend, and performance visibility elsewhere
-                            in the platform.
+                            Inventory information becomes more useful when every part of the system speaks the same
+                            language.
+                            
+                            An item can have multiple packaging configurations, be assigned to specific branches, and
+                            have separate stock records at each location—all while remaining part of the same inventory
+                            structure.
                         </p>
 
                         <div className="mod-feature-grid">
