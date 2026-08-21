@@ -30,7 +30,7 @@ export const MODULES = {
             "Procurement is where operational needs become controlled purchases. Sandwich connects purchase requests, approvals, purchase orders, deliveries, goods received, budgets, and supplier performance in one workflow—so your team can see what was requested, what was approved, what was ordered, and what actually arrived.",
 
         descGoodsReceived:
-            "Sandwich gives your team a structured way to record the difference. Create a GRN from a purchase order, record the actual quantities received, update prices and expiry information, and capture quality-control status before finalizing the receipt.",
+            "Sandwich gives your team a structured way to record the difference. Create a GRN from a purchase order, record the actual quantities received, update prices and expiry informations, and capture quality-control status before finalizing the receipt.",
 
         descBudgetControl:
             "Procurement decisions shouldn't happen in isolation from financial limits. \n \n Set budgets by category, monitor actual spend against them, and surface threshold alerts when spending starts to move beyond the defined limit.",
