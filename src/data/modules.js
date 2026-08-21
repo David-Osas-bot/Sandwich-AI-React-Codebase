@@ -189,6 +189,17 @@ export const MODULES = {
             ["Finance teams", "monitor spend against budgets"],
             ["Operations leaders", "analyze delivery, spend, QC, and supplier performance"],
         ],
+
+        // procurement
+        accessHeadline: "Procurement wherever the work happens.",
+        accessLede: "The procurement workflow shouldn't stop at the dashboard. Give operational teams a way to capture activity where it happens, while managers get the broader visibility they need to control purchasing.",
+        accessMobileTitle: "On the move",
+        accessMobileDesc: "Keep procurement activity close to the operation.",
+        accessWebTitle: "Running the business",
+        accessWebDesc: "Full-screen analytics, approvals, and configuration from any browser.",
+        connectedHeadline: "Procurement doesn't work in isolation.",
+        connectedLede: "Every purchase creates information that can support the next decision. A procurement request becomes a purchase order. A purchase order becomes a delivery. A delivery becomes a goods received record. That activity feeds your budget, spend, delivery, and supplier-performance visibility.",
+
         faqs: [
             ["Can procurement requests be approved or rejected?", "Yes — procurement requests can be reviewed and approved or rejected by authorized managers."],
             ["Can purchase orders go through an approval process?", "Yes — purchase orders can be submitted for approval, approved, rejected, and tracked through their approval history."],
@@ -337,6 +348,15 @@ export const MODULES = {
             ["Administrators", "maintain organization-wide inventory visibility and controls"],
         ],
 
+        accessHeadline: "Inventory where your operation needs it.",
+        accessLede: "Inventory management happens at the point where stock is stored, handled, and counted—but managers also need a broader view of what's happening across branches.",
+        accessMobileTitle: "At the point of work",
+        accessMobileDesc: "Give operational teams access to the inventory information and actions they need where stock activity happens.",
+        accessWebTitle: "Running the operation",
+        accessWebDesc: "Give managers and administrators the broader view needed to configure and monitor inventory.",
+        connectedHeadline: "One inventory record. Multiple ways to work with it.",
+        connectedLede: "Inventory information becomes more useful when every part of the system speaks the same language. An item can have multiple packaging configurations, be assigned to specific branches, and have separate stock records at each location—all while remaining part of the same inventory structure.",
+
         connected: [
             ["box", "Items", "Define the products and materials your operation manages."],
             ["transfer", "Packaging", "Translate between the different ways an item is purchased, received, or counted."],
@@ -361,7 +381,7 @@ export const MODULES = {
             ["Can I see inventory across the whole organization?", "Yes — Sandwich provides an organization-wide inventory summary as well as branch-specific inventory summaries."],
         ],
 
-        related: [ "procurement", "kitchen", "budgets"],
+        related: ["procurement", "kitchen", "budgets"],
     },
 
     suppliers: {
@@ -525,36 +545,175 @@ export const MODULES = {
         cat: "money",
         icon: "coin",
         title: "Accounting & Finance",
-        tagline: "A daily P&L in your inbox by morning, synced to the accounting software you already use.",
+        tagline: "Turn every transaction into a clearer financial picture. Build your chart of accounts, record and control journal entries, generate the financial statements your business needs, and keep tax configuration in one connected accounting system.",
         stats: [
-            ["95%+", "accuracy on daily automated P&L"],
-            ["18", "built-in accounting capabilities"],
-            ["Auto", "sync to QuickBooks or Xero"],
+            ["1", "connected accounting structure across your organization"],
+            ["5", "core financial reports at your fingertips"],
+            ["1", "source of truth for your general ledger"],
         ],
-        desc: "Every sale, purchase, and payroll entry across the platform posts to one ledger, so the daily P&L is assembled automatically instead of rebuilt by hand from five different sources.",
+        desc:
+            "Your restaurant generates financial activity every day. Accounting turns that activity into information you can actually use. Sandwich gives you the foundation to structure your accounts, record journal entries, post them to the general ledger, reverse or void entries when necessary, and generate key financial reports from the same accounting data.",
+
+        images: {
+            overview: { alt: "Accounting dashboard" },
+            workflow: { alt: "Accounting workflow" },
+            chartOfAccounts: { alt: "Chart of Accounts screen" },
+            journalEntries: { alt: "Journal entry detail screen" },
+            financialReporting: { alt: "Financial reports dashboard" },
+            generalLedger: { alt: "General Ledger / account activity screen" },
+            taxConfiguration: { alt: "Tax configuration screen" },
+            intelligence: { alt: "Accounting analytics / reports view" },
+            experiences: { alt: "Mobile/web accounting experience" },
+            dataFlow: { alt: "Sandwich financial ecosystem" },
+        },
+
         features: [
-            ["coin", "Automated daily P&L", "Revenue, cost, and margin assembled from live operational data."],
-            ["check", "Journal entries", "Every stock movement and payment posts as a proper journal entry."],
-            ["chart", "Cash flow tracking", "See cash position across branches without waiting on month-end."],
-            ["box", "QuickBooks / Xero sync", "Journal entries, invoices, and tax rates sync automatically."],
+            ["reports", "Chart of accounts", "Create and organize the accounts that make up your organization's accounting structure, with account codes, balances, defaults, and a hierarchical view."],
+            ["check", "Journal entries", "Create, review, update, and manage journal entries before posting them to the General Ledger."],
+            ["box", "General Ledger control", "Post finalized journal entries to the General Ledger, while maintaining the ability to reverse posted entries when corrections are required."],
+            ["chart", "Financial reporting", "Generate Profit & Loss, Balance Sheet, Cash Flow, Trial Balance, Aged Payables, and Aged Receivables reports from your accounting data."],
+            ["coin", "Tax configuration", "Configure your organization's tax rules, manage active tax configurations, and calculate tax against an amount."],
         ],
+
         steps: [
-            ["Capture", "Sales, purchases, and payroll post to the ledger as they happen."],
-            ["Classify", "Entries are categorized against your chart of accounts."],
-            ["Reconcile", "Bank and wallet balances are matched against the ledger."],
-            ["Report", "Daily P&L and cash flow are ready each morning."],
+            ["Set up your accounts", "Establish your chart of accounts and organize accounts into a clear accounting hierarchy."],
+            ["Record financial activity", "Create journal entries to capture financial transactions and adjustments."],
+            ["Review & post", "Keep entries in draft while they are being prepared, then post them to the General Ledger when they're ready."],
+            ["Report", "Turn your accounting data into financial statements and reports that help you understand the state of the business."],
+            ["Stay compliant", "Maintain your tax configurations and calculate applicable tax amounts using the rules configured for your organization."],
         ],
-        accessMobile: [["Branch teams", "see daily sales and cost summaries for their branch"]],
+
+        // Six deep-dive subsections rendered between "Step by step" and
+        // "One system, two experiences" — matches the PDF's dedicated
+        // sections for Chart of Accounts, Journal Entries, Financial
+        // Reporting, General Ledger, Tax Configuration, and Accounting
+        // Intelligence.
+        deepDives: [
+            {
+                field: "chartOfAccounts",
+                eyebrow: "Chart of Accounts",
+                title: "Give every number a place.",
+                desc: "A reliable accounting system starts with a clear structure. Sandwich lets you create and manage accounts, organize them into a hierarchy, retrieve balances, and work with account codes so your financial data has a consistent home.",
+                features: [
+                    ["Build your account structure", "Create the accounts your organization needs and organize them into a structured hierarchy."],
+                    ["Work with account codes", "Find accounts quickly using their unique account codes."],
+                    ["Monitor balances", "View the current balance associated with an account."],
+                    ["Use default accounts", "Access and manage the default account configuration available within your accounting setup."],
+                ],
+            },
+            {
+                field: "journalEntries",
+                eyebrow: "Journal Entries",
+                title: "Record it. Review it. Post it.",
+                desc: "Journal entries give your accounting team control over how financial activity enters the General Ledger. Sandwich separates preparation from posting, allowing entries to remain in draft while they're being worked on and preventing posted entries from being casually edited.",
+                features: [
+                    ["Draft before posting", "Create and review journal entries before committing them to the General Ledger."],
+                    ["Edit safely", "Draft entries can be updated while they're still being prepared."],
+                    ["Post to the General Ledger", "When an entry is ready, post it to the General Ledger."],
+                    ["Reverse posted entries", "If a posted entry needs to be corrected, create a reversal rather than modifying the historical posted record."],
+                    ["Track account activity", "View journal entries associated with a specific account to understand how its balance has been affected."],
+                ],
+            },
+            {
+                field: "financialReporting",
+                eyebrow: "Financial Reporting",
+                title: "From accounting data to business decisions.",
+                desc: "Financial data is only useful when it can be understood. Sandwich turns your accounting records into the reports your management and finance teams need to understand performance, financial position, cash movement, and outstanding balances.",
+                features: [
+                    ["Profit & Loss", "Understand revenue, expenses, and the resulting profit or loss for a selected period."],
+                    ["Balance Sheet", "See the financial position of the business across its assets, liabilities, and equity."],
+                    ["Cash Flow", "Understand how cash is moving through the business over a selected period."],
+                    ["Trial Balance", "Review account balances and the underlying accounting position before deeper financial analysis."],
+                    ["Aged Payables", "Understand outstanding creditor balances by age."],
+                    ["Aged Receivables", "Understand outstanding debtor balances by age."],
+                ],
+            },
+            {
+                field: "generalLedger",
+                eyebrow: "General Ledger",
+                title: "Keep the books under control.",
+                desc: "The General Ledger is where posted accounting activity comes together. Sandwich provides a controlled path from journal entry creation to posting, while preserving the ability to reverse posted entries when corrections are necessary.",
+                features: [
+                    ["Controlled posting", "Journal entries are posted explicitly rather than becoming part of the General Ledger immediately when they're created."],
+                    ["Account-level visibility", "View the entries associated with individual accounts."],
+                    ["Correct without rewriting history", "Reverse posted journal entries when corrections are needed."],
+                    ["Structured accounting data", "Keep your accounting activity connected to the chart of accounts and financial reporting layer."],
+                ],
+            },
+            {
+                field: "taxConfiguration",
+                eyebrow: "Tax Configuration",
+                title: "Make tax part of the accounting workflow.",
+                desc: "Tax rules shouldn't live in spreadsheets or separate calculations. Sandwich lets you configure tax settings, manage active tax configurations, look them up by tax code, and calculate tax for a given amount.",
+                features: [
+                    ["Configure tax rules", "Create and maintain tax configurations for your organization."],
+                    ["Manage active taxes", "See which tax configurations are currently active."],
+                    ["Find by tax code", "Quickly retrieve a tax configuration using its code."],
+                    ["Calculate tax", "Use configured tax rules to calculate the applicable tax amount."],
+                ],
+            },
+            {
+                field: "intelligence",
+                eyebrow: "Accounting Intelligence",
+                title: "See the numbers behind the operation.",
+                desc: "Accounting shouldn't just tell you what happened. It should give your team a clearer picture of where the business stands. Use your accounting data to move from individual journal entries to account balances and finally to financial reports.",
+                features: [
+                    ["Account balances", "Understand the current position of individual accounts."],
+                    ["Profitability", "Use the Profit & Loss statement to understand financial performance."],
+                    ["Financial position", "Use the Balance Sheet to understand the organization's financial position."],
+                    ["Cash movement", "Use the Cash Flow Statement to understand movement of cash."],
+                    ["Outstanding balances", "Use aged payables and receivables reports to understand outstanding creditor and debtor balances."],
+                ],
+            },
+        ],
+
+        accessMobile: [
+            ["Operational teams", "contribute to the business activity that feeds the wider financial picture"],
+            ["Authorized users", "access relevant accounting information where supported"],
+            ["Managers", "stay connected to the financial state of their operation"],
+        ],
         accessWeb: [
-            ["Finance Officer", "closes the books daily and manages the chart of accounts"],
-            ["Super Admin", "reviews consolidated financials across branches"],
+            ["Finance teams", "manage accounts and journal entries"],
+            ["Managers", "review financial reports and account balances"],
+            ["Administrators", "configure accounting and tax structures for the organization"],
         ],
+
+        // accounting
+        accessHeadline: "Financial control for the people who need it.",
+        accessLede: "Accounting requires detailed control for finance teams and clear visibility for decision-makers. Sandwich provides the accounting foundation while allowing different users to work with the information relevant to their responsibilities.",
+        accessMobileTitle: "Where financial activity starts",
+        accessMobileDesc: "Connect financial information to the operational activity happening across your restaurant.",
+        accessWebTitle: "Running the numbers",
+        accessWebDesc: "Give finance and management teams the deeper tools required to manage accounting.",
+        connectedHeadline: "Your accounting should know what the operation is doing.",
+        connectedLede: "Accounting becomes more powerful when financial information doesn't exist in isolation. Sandwich provides the accounting foundation that can sit alongside the operational systems running your restaurant—from procurement and inventory to sales and other financial activity.",
+
+        connected: [
+            ["box", "Operations", "Operational activity creates the financial information your accounting team needs to understand."],
+            ["reports", "Accounts", "Organize financial activity using your chart of accounts."],
+            ["check", "General Ledger", "Bring posted journal entries together in one accounting record."],
+            ["chart", "Reports", "Turn accounting data into financial statements and management information."],
+            ["coin", "Tax", "Apply configured tax rules when tax calculations are required."],
+        ],
+
         integrations: ["QuickBooks", "Xero", "Paystack"],
+
         faqs: [
-            ["Do I need to double-enter anything in QuickBooks or Xero?", "No — the accounting module syncs journal entries, invoices, suppliers, and tax rates automatically."],
-            ["How current is the daily P&L?", "It's assembled from the same real-time ledger every other module posts to, so it reflects the previous full day of operations each morning."],
+            ["Can I create my own chart of accounts?", "Yes — Sandwich allows accounts to be created, updated, viewed, and organized into an account hierarchy."],
+            ["Can I see an account's balance?", "Yes — individual account balances can be retrieved directly from the accounting system."],
+            ["Can journal entries be edited after they're posted?", "No — the documented workflow allows journal entries to be updated while they are in DRAFT status. Posted entries can instead be reversed when a correction is required."],
+            ["Can I reverse a posted journal entry?", "Yes — Sandwich supports reversing posted journal entries."],
+            ["Can I delete a journal entry?", "Draft journal entries can be deleted. Posted entries follow the controlled reversal workflow instead."],
+            ["What financial reports are available?", "Sandwich supports Profit & Loss, Balance Sheet, Cash Flow, Trial Balance, Aged Payables, and Aged Receivables reports."],
+            ["Can I generate a Profit & Loss statement?", "Yes — the accounting module provides a dedicated Profit & Loss report."],
+            ["Can I generate a Balance Sheet?", "Yes — Sandwich provides a Balance Sheet report."],
+            ["Can I see cash flow?", "Yes — a Cash Flow Statement can be generated from the accounting data."],
+            ["Can I generate aged payables and receivables reports?", "Yes — Sandwich provides both Aged Payables and Aged Receivables reports."],
+            ["Can I configure taxes?", "Yes — you can create, update, activate, and manage tax configurations."],
+            ["Can Sandwich calculate tax?", "Yes — the tax configuration module provides a tax calculation function based on configured tax information."],
         ],
-        related: ["budgets", "reports", "payments"],
+
+        related: ["procurement", "inventory", "pos"],
     },
 
     budgets: {
@@ -702,9 +861,9 @@ export const MODULES = {
     },
 
     pos: {
-        cat: "foh",
+        cat: "money",
         icon: "pos",
-        title: "POS & Table Management",
+        title: "POS & Sales",
         tagline: "Full-screen table service with split bills, and every sale depleting stock the instant it's rung in.",
         stats: [
             ["Live", "stock depletion on every sale"],

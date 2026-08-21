@@ -901,24 +901,23 @@ const Module = () => {
                 </section>
             ))}
 
-            {/* Who touches this */}
+            {/* One System */}
             {(m.accessMobile || m.accessWeb) && (
                 <section className="mod-section mod-centered">
                     <div className="wrap">
                         <div className="mod-eyebrow">One system, two experiences</div>
-                        <h2 className="mod-h2">{m.title.split("&")[0].trim()} where your operation needs it.</h2>
+                        <h2 className="mod-h2">{m.accessHeadline || `${m.title.split("&")[0].trim()} wherever the work happens.`}</h2>
                         <p className="mod-section-lede">
-                            Inventory management happens at the point where stock is stored, handled, and
-                            counted—but managers also need a broader view of what's happening across branches.
+                            {m.accessLede || "The workflow shouldn't stop at the dashboard. Give operational teams a way to capture activity where it happens, while managers get the broader visibility they need to stay in control."}
                         </p>
 
                         <div className="mod-split">
                             {m.accessMobile && (
                                 <div className="mod-split-card">
                                     <span className="mod-tag yellow">MOBILE APP</span>
-                                    <h3 className="mod-split-h">On the move</h3>
+                                    <h3 className="mod-split-h">{m.accessMobileTitle || "On the move"}</h3>
                                     <p className="mod-split-desc">
-                                        Keep activity close to the operation.
+                                        {m.accessMobileDesc || "Keep activity close to the operation."}
                                     </p>
                                     <ul className="mod-bullets">
                                         {m.accessMobile.map(([role, text]) => (
@@ -934,9 +933,9 @@ const Module = () => {
                             {m.accessWeb && (
                                 <div className="mod-split-card">
                                     <span className="mod-tag dark">WEB DASHBOARD</span>
-                                    <h3 className="mod-split-h">Running the business</h3>
+                                    <h3 className="mod-split-h">{m.accessWebTitle || "Running the business"}</h3>
                                     <p className="mod-split-desc">
-                                        Full-screen analytics, approvals, and configuration from any browser.
+                                        {m.accessWebDesc || "Full-screen analytics, approvals, and configuration from any browser."}
                                     </p>
                                     <ul className="mod-bullets">
                                         {m.accessWeb.map(([role, text]) => (
@@ -953,19 +952,14 @@ const Module = () => {
                 </section>
             )}
 
-            {/* Connected tools — only procurement defines m.connected today */}
+            {/* Connected */}
             {m.connected && (
                 <section className="mod-section mod-centered">
                     <div className="wrap">
                         <div className="mod-eyebrow">Connected</div>
-                        <h2 className="mod-h2">One {m.title.split("&")[0].trim()} record. Multiple ways to work with it.</h2>
+                        <h2 className="mod-h2">{m.connectedHeadline || `${m.title.split("&")[0].trim()} doesn't work in isolation.`}</h2>
                         <p className="mod-section-lede" style={{ marginBottom: 32 }}>
-                            Inventory information becomes more useful when every part of the system speaks the same
-                            language.
-                            
-                            An item can have multiple packaging configurations, be assigned to specific branches, and
-                            have separate stock records at each location—all while remaining part of the same inventory
-                            structure.
+                            {m.connectedLede || "Every action here creates information that can support the next decision, feeding budgets, spend, and performance visibility elsewhere in the platform."}
                         </p>
 
                         <div className="mod-feature-grid">
