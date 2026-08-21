@@ -552,6 +552,7 @@
 
 
 // src/components/Module.jsx
+// src/components/Module.jsx
 
 import React, { useState, useEffect } from "react";
 import { useParams, Link, Navigate } from "react-router-dom";
@@ -644,7 +645,16 @@ function ModuleImage({ slug, field, alt, wrapperClassName = "mod-image-card", wr
 
     // Nothing to show yet, or confirmed missing — render nothing at all,
     // including the wrapper card, so no empty space is left behind.
-    if (!checked || !src) return null;
+    //
+    // `meta` is recalculated fresh from props every render, but `checked`
+    // and `src` are state that only updates once the async image-probe
+    // effect finishes. On a fast route change, React can render this
+    // component with the NEW slug/field (meta now undefined) while
+    // `checked`/`src` still hold values from the PREVIOUS module — so
+    // `!checked || !src` alone can pass on stale state even though meta
+    // is already gone. Checking `!meta` too closes that gap, since meta
+    // is always in sync with the current props.
+    if (!checked || !src || !meta) return null;
 
     return (
         <div className={wrapperClassName} style={wrapperStyle}>
