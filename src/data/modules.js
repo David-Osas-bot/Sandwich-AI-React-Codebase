@@ -20,44 +20,187 @@ export const MODULES = {
         icon: "box",
         title: "Procurement & Purchase Orders",
         tagline:
-            "Every order routes through approval and lands as a matched GRN — nothing gets bought on a hunch.",
+            "Every purchase has a process. From request to approval to delivery, Sandwich keeps it visible, controlled, and accountable.",
         stats: [
-            ["3", "approval stages, fully configurable"],
-            ["100%", "POs auto-linked to GRNs on delivery"],
-            ["0", "orders placed without a budget check"],
+            ["1", "connected workflow from request to receiving"],
+            ["3", "core control points: request, purchase, receive"],
+            ["360%", "visibility across spend, delivery, and supplier performance"],
         ],
         desc:
-            "Procurement is where discipline starts. Staff raise purchase requests against live stock levels, managers approve against budget, and every delivery is matched line-by-line before it touches the ledger.",
+            "Procurement is where operational needs become controlled purchases. Sandwich connects purchase requests, approvals, purchase orders, deliveries, goods received, budgets, and supplier performance in one workflow—so your team can see what was requested, what was approved, what was ordered, and what actually arrived.",
+
+        descGoodsReceived:
+            "Sandwich gives your team a structured way to record the difference. Create a GRN from a purchase order, record the actual quantities received, update prices and expiry information, and capture quality-control status before finalizing the receipt.",
+
+        descBudgetControl:
+            "Procurement decisions shouldn't happen in isolation from financial limits. \n \n Set budgets by category, monitor actual spend against them, and surface threshold alerts when spending starts to move beyond the defined limit.",
+
+        descprocurementIntelligence:
+            "Procurement data becomes more valuable when it helps you make the next decision. Sandwich gives you a broader view of procurement spend and performance—by category, by supplier, and over time.",
+
+        descSupplierPerformance: 
+            "The real cost of a supplier is revealed by what happens after the order is placed. Sandwich gives your procurement team visibility into supplier performance across delivery, spend, and quality-related activity.",
+        images: {
+            overview: { alt: "Procurement overview dashboard" },
+            workflow: { alt: "Procurement workflow" },
+            purchaseOrder: { alt: "Purchase Order detail screen" },
+            goodsReceived: { alt: "GRN / Goods Received screen" },
+            budgetControl: { alt: "Budget vs Spend dashboard" },
+            analytics: { alt: "Procurement analytics dashboard" },
+            supplierPerformance: { alt: "Supplier performance dashboard" },
+            experiences: { alt: "Mobile procurement + web procurement screens side by side" },
+            dataFlow: { alt: "Connected procurement data flow" },
+        },
         features: [
-            ["check", "Draft & approve POs", "Multi-stage approval routing based on branch, category, or spend threshold."],
-            ["truck", "Supplier catalogs & pricing", "Standing price lists per supplier, with historical price tracking built in."],
-            ["box", "GRN matching", "Goods received are matched against the PO automatically, flagging shortfalls."],
-            ["chart", "AI invoice OCR", "Scans supplier invoices and pre-fills the GRN for a human to confirm."],
+            ["check", "Purchase requests", "Turn operational needs into structured procurement requests. Teams can create, update, track, approve, or reject requests without losing the trail."],
+            ["box", "Purchase orders", "Create purchase orders, submit them for approval, approve or reject them, dispatch them to suppliers, and track their progress through delivery."],
+            ["truck", "Goods received & quality control", "Record what actually arrived against a purchase order. Capture quantities, prices, expiry information, and QC status, then finalize the GRN when the record is complete."],
+            ["coin", "Budget control", "Set budgets by procurement category, compare actual spend against those budgets. Get alerts when thresholds are exceeded."],
+            ["chart", "Supplier performance", "See supplier performance through delivery, spend, and quality-related data. Compare suppliers, identify top and bottom performers, and drill into individual supplier performance."],
         ],
-        ai: [
-            ["AI Invoice OCR", "Auto-fills GRN fields from a photographed or emailed supplier invoice."],
-            ["Price Variance Alerts", "Flags a line item priced outside its normal range before it's approved."],
+
+        goods: [
+            ["check", "Match deliveries to orders", "See the GRNs associated with each purchase order and track its delivery status."],
+            ["box", "Record discrepancies", "Identify outstanding quantities instead of assuming the order arrived complete."],
+            ["truck", "Quality control", "Update QC status for received items and monitor quality-control statistics."],
+            ["coin", "Protect finalized records", "Once a GRN is finalized, it is locked against further edits, preserving the integrity of the receiving record."],
         ],
+
+        suppliers: [
+            ["check", "Rank performance", "Identify your top and bottom-performing suppliers."],
+            ["box", "Measure delivery", "Use delivery performance and on-time rates to understand supplier reliability."],
+            ["truck", "Analyze supplier spend", "See how much you're spending with individual suppliers."],
+            ["coin", "Drill into performance", "Open a supplier-level view to understand its performance metrics in more detail."],
+        ],
+
+        connected: [
+            ["check", "Purchasing", "Know what was requested, approved, ordered, and dispatched."],
+            ["box", "Receiving", "Know what actually arrived and what remains outstanding."],
+            ["truck", "Budget", "See procurement spend against defined category budgets."],
+            ["coin", "Supplier performance", "Use delivery, spend, and quality data to evaluate supplier performance."],
+        ],
+
+        budget: [
+            ["check", "Set category budgets", "Create and manage budgets around the categories your operation purchases from."],
+            ["box", "Compare spend against budget", "See where actual procurement spend stands against the allocated budget."],
+            ["truck", "Catch threshold breaches", "Get visibility when spending crosses configured budget thresholds."],
+            ["coin", "Understand the bigger picture", "Set budgets by procurement category, compare actual spend against those budgets. Get alerts when thresholds are exceeded."],
+            ["chart", "Supplier performance", "Use the budget summary to quickly understand procurement performance across your operation."],
+        ],
+
         steps: [
-            ["Request", "Any approved role raises a purchase request against a category or recipe."],
-            ["Approve", "Routes to the right approver based on branch and spend threshold."],
-            ["Send to supplier", "Approved POs go out with your standing pricing attached."],
-            ["Receive & match", "GRN is checked against the PO; discrepancies are flagged, not hidden."],
+            ["Request", "A team member raises a procurement request for the items the operation needs."],
+            ["Approve", "The request moves through the appropriate approval process before purchasing goes ahead."],
+            ["Purchase", "Create the purchase order, submit it for approval, and dispatch the approved order to the supplier."],
+            ["Receive", "When the delivery arrives, create a goods received record against the purchase order and capture what was actually delivered."],
+            ["Verify", "Record quantity, price, expiry, and quality-control information — discrepancies and outstanding quantities stay visible instead of disappearing into manual records."],
+        ],
+
+        purchase: [
+            ["Approval status", "See whether a purchase order is pending approval, approved, rejected, or ready for dispatch."],
+            ["Delivery progress", "Track how much of an order has been delivered and what remains outstanding."],
+            ["Overdue deliveries", "Surface purchase orders with outstanding quantities that have passed their expected delivery point."],
+            ["Bulk purchasing", "Create multiple purchase orders from selected products when purchasing needs to happen at scale."],
+        ],
+
+        intelligence: [
+            ["Spend by category", "Understand which procurement categories account for the most spending."],
+            ["Spend by supplier", "See your highest-spend suppliers and understand where your purchasing money is concentrated."],
+            ["Spend trends", "Track procurement spend over time and identify changes in purchasing patterns."],
+            ["Category deep dives", "Drill into individual categories when you need to understand what's driving the spend."],
+            ["Delivery performance", "Monitor delivery performance trends and on-time delivery rates."],
+            ["Quality performance", "Use QC statistics to understand the quality of goods being received."],
+        ],
+        // Five deep-dive subsections rendered between "Step by step" and
+        // "One system, two experiences" — matches the PDF's dedicated
+        // sections for Purchase Orders, Goods Received, Budget Control,
+        // Procurement Intelligence, and Supplier Performance.
+        deepDives: [
+            {
+                field: "purchaseOrder",
+                eyebrow: "Purchase Orders",
+                title: "Buy with control, not guesswork.",
+                desc: "A purchase order is more than a document. It's the link between what your team requested, what was approved, what the supplier was asked to deliver, and what eventually arrived.",
+                features: [
+                    ["Approval status", "See whether a purchase order is pending approval, approved, rejected, or ready for dispatch."],
+                    ["Delivery progress", "Track how much of an order has been delivered and what remains outstanding."],
+                    ["Overdue deliveries", "Surface purchase orders with outstanding quantities that have passed their expected delivery point."],
+                    ["Bulk purchasing", "Create multiple purchase orders from selected products when purchasing needs to happen at scale."],
+                ],
+            },
+            {
+                field: "goodsReceived",
+                eyebrow: "Goods Received",
+                title: "What you ordered isn't always what you receive.",
+                desc: "Sandwich gives your team a structured way to record the difference. Create a GRN from a purchase order, record actual quantities, update prices and expiry, and capture quality-control status before finalizing the receipt.",
+                features: [
+                    ["Match deliveries to orders", "See the GRNs associated with each purchase order and track its delivery status."],
+                    ["Record discrepancies", "Identify outstanding quantities instead of assuming the order arrived complete."],
+                    ["Quality control", "Update QC status for received items and monitor quality-control statistics."],
+                    ["Protect finalized records", "Once a GRN is finalized, it is locked against further edits, preserving the integrity of the receiving record."],
+                ],
+            },
+            {
+                field: "budgetControl",
+                eyebrow: "Budget Control",
+                title: "Know the budget before the spend becomes a problem.",
+                desc: "Procurement decisions shouldn't happen in isolation from financial limits. Set budgets by category, monitor actual spend against them, and surface threshold alerts when spending starts to move beyond the defined limit.",
+                features: [
+                    ["Set category budgets", "Create and manage budgets around the categories your operation purchases from."],
+                    ["Compare spend against budget", "See where actual procurement spend stands against the allocated budget."],
+                    ["Catch threshold breaches", "Get visibility when spending crosses configured budget thresholds."],
+                    ["Understand the bigger picture", "Use the budget summary to quickly understand procurement performance across your operation."],
+                ],
+            },
+            {
+                field: "analytics",
+                eyebrow: "Procurement Intelligence",
+                title: "See where the money is going.",
+                desc: "Procurement data becomes more valuable when it helps you make the next decision. Sandwich gives you a broader view of procurement spend and performance — by category, by supplier, and over time.",
+                features: [
+                    ["Spend by category", "Understand which procurement categories account for the most spending."],
+                    ["Spend by supplier", "See your highest-spend suppliers and understand where your purchasing money is concentrated."],
+                    ["Spend trends", "Track procurement spend over time and identify changes in purchasing patterns."],
+                    ["Category deep dives", "Drill into individual categories when you need to understand what's driving the spend."],
+                    ["Delivery performance", "Monitor delivery performance trends and on-time delivery rates."],
+                    ["Quality performance", "Use QC statistics to understand the quality of goods being received."],
+                ],
+            },
+            {
+                field: "supplierPerformance",
+                eyebrow: "Supplier Performance",
+                title: "Don't judge suppliers by price alone.",
+                desc: "The real cost of a supplier is revealed by what happens after the order is placed. Sandwich gives your procurement team visibility into supplier performance across delivery, spend, and quality-related activity.",
+                features: [
+                    ["Rank performance", "Identify your top and bottom-performing suppliers."],
+                    ["Measure delivery", "Use delivery performance and on-time rates to understand supplier reliability."],
+                    ["Analyze supplier spend", "See how much you're spending with individual suppliers."],
+                    ["Drill into performance", "Open a supplier-level view to understand its performance metrics in more detail."],
+                ],
+            },
         ],
         accessMobile: [
-            ["Procurement staff", "raise purchase requests, scan GRNs on delivery"],
-            ["Branch teams", "flag damaged or short deliveries with photo proof"],
-            ["Any custom role", "request stock without needing dashboard access"],
+            ["Operational teams", "raise procurement requests when stock or supplies are needed"],
+            ["Receiving teams", "capture goods received information when deliveries arrive"],
+            ["Managers", "stay connected to purchasing activity without being tied to a desk"],
         ],
         accessWeb: [
-            ["Branch Manager", "approves requests within their threshold"],
-            ["Super Admin", "sets approval rules and views spend by supplier"],
-            ["Finance Officer", "reconciles POs against budget in real time"],
+            ["Managers", "review and act on procurement requests and purchase orders"],
+            ["Finance teams", "monitor spend against budgets"],
+            ["Operations leaders", "analyze delivery, spend, QC, and supplier performance"],
         ],
         integrations: ["Paystack", "QuickBooks", "Xero", "WhatsApp Business"],
         faqs: [
-            ["Can I set different approval limits per branch?", "Yes — approval thresholds, routing, and required approvers are configurable per branch or department."],
-            ["What happens if a delivery doesn't match the PO?", "The GRN is flagged for review instead of posting silently, so stock and cost only update once someone signs off on the discrepancy."],
+            ["Can procurement requests be approved or rejected?", "Yes — procurement requests can be reviewed and approved or rejected by authorized managers."],
+            ["Can purchase orders go through an approval process?", "Yes — purchase orders can be submitted for approval, approved, rejected, and tracked through their approval history."],
+            ["Can I see which purchase orders are still awaiting approval?", "Yes — Sandwich provides a view of purchase orders currently pending approval."],
+            ["What happens when a supplier delivers less than ordered?", "The purchase order's delivery status and outstanding quantities are tracked, making partial or incomplete deliveries visible."],
+            ["Can I track overdue deliveries?", "Yes — Sandwich can surface purchase orders with outstanding quantities that are overdue."],
+            ["Can I see what was actually received?", "Yes — goods received records link back to their purchase orders, so your team can track what was received against what was ordered."],
+            ["Can I record quality-control information?", "Yes — QC status can be updated on received items, with QC statistics available for analysis."],
+            ["Can procurement spend be compared against a budget?", "Yes — budgets can be created by category, with spend-versus-budget comparisons and threshold alerts."],
+            ["Can I see which suppliers we're spending the most with?", "Yes — procurement analytics includes supplier-level spend analysis and top suppliers by spend."],
+            ["Can I compare supplier performance?", "Yes — Sandwich provides supplier performance metrics, rankings, spend analysis, and supplier-specific performance views."],
         ],
         related: ["inventory", "suppliers", "budgets"],
     },
