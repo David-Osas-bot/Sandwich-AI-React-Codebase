@@ -42,7 +42,7 @@ export const MODULES = {
             "The real cost of a supplier is revealed by what happens after the order is placed. Sandwich gives your procurement team visibility into supplier performance across delivery, spend, and quality-related activity.",
         images: {
             overview: { alt: "Procurement overview dashboard" },
-            workflow: { alt: "Procurement workflow" },
+            procurementWorkflow: { alt: "Procurement workflow" },
             purchaseOrder: { alt: "Purchase Order detail screen" },
             goodsReceived: { alt: "GRN / Goods Received screen" },
             budgetControl: { alt: "Budget vs Spend dashboard" },

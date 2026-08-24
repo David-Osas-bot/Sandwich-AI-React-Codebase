@@ -310,7 +310,7 @@ const Module = () => {
                         </div>
 
                         {/* WORKFLOW IMAGE */}
-                        <ModuleImage slug={slug} field="workflow" alt={`${m.title} Workflow`} />
+                        <ModuleImage slug={slug} field="procurementWorkflow" alt={`${m.title} Workflow`} />
                     </div>
                 </section>
             )}
@@ -332,6 +332,7 @@ const Module = () => {
                         <h2 className="mod-h2">{dive.title}</h2>
                         <p className="mod-section-lede">{dive.desc}</p>
 
+                        {/* This dynamic call handles each section's individual image */}
                         <ModuleImage slug={slug} field={dive.field} alt={`${m.title} ${dive.eyebrow}`} />
                         <br /> <br />
 
