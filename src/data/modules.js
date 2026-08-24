@@ -469,43 +469,234 @@ export const MODULES = {
         related: ["kitchen", "budgets", "forecasting"],
     },
 
+    // kitchen: {
+    //     cat: "ops",
+    //     icon: "chef",
+    //     title: "Kitchen & Central Production",
+    //     tagline: "Turn every order into organized production—and every production run into controlled supply. Connect recipes, menu items, kitchen stations, orders, production, and branch demand in one workflow. From the kitchen floor to your central production operation, Sandwich keeps teams aligned on what needs to be made, where it needs to go, and what was actually received.",
+    //     stats: [
+    //         ["1", "connected workflow from menu to production"],
+    //         ["2", "production environments: branch kitchen & central kitchen"],
+    //         ["360%", "visibility across orders, recipes, production, and transfers"],
+    //     ],
+    //     desc: "A busy restaurant kitchen has to answer more than “what are we cooking?” It needs to know what was ordered, how it should be prepared, which ingredients are required, what each station is responsible for, what the central kitchen needs to produce, and what each branch actually receives. Sandwich connects those workflows so your kitchen and production teams work from the same operational picture.",
+    //     features: [
+    //         ["chef", "Orders & kitchen workflow", "Create and manage kitchen orders, track their status, and keep production activity connected to the orders coming through the operation."],
+    //         ["box", "Recipes & ingredients", "Define recipes, attach their ingredients, and maintain the relationship between menu items and the recipes used to produce them."],
+    //         ["truck", "Kitchen stations", "Organize kitchen operations around defined stations so production can reflect how your kitchen is actually structured."],
+    //         ["check", "Central production", "Designate a branch as the Central Kitchen, receive production demand from branches, record production batches, and dispatch finished stock where it is needed."],
+    //         ["chart", "Controlled transfers", "Track stock moving from the Central Kitchen to branches, confirm receipt at the destination, and resolve disputes when what was dispatched doesn't match what was received."],
+    //     ],
+    //     steps: [
+    //         ["Build the menu & recipes", "Create menu items and define the recipes and ingredients behind them"],
+    //         ["Receive the demand", "Kitchen orders and internal Central Kitchen orders create a clear picture of what needs to be produced."],
+    //         ["Produce", "Kitchen teams work through operational demand, while the Central Kitchen can consolidate approved branch requirements and record production batches."],
+    //         ["Dispatch", "Central Kitchen sends produced stock to the branches that requested it."],
+    //         ["Receive & reconcile", "The destination branch confirms receipt. If there's a discrepancy, the transfer can be rejected or the affected item can be taken through a dispute-resolution process."],
+
+    //     ],
+    //     accessMobile: [
+    //         ["Kitchen staff", "view and clear KDS tickets by station"],
+    //         ["Processing staff", "log batch production against central recipes"],
+    //     ],
+    //     accessWeb: [
+    //         ["Branch Manager", "monitors kitchen throughput via the 3D view"],
+    //         ["Super Admin", "compares kitchen speed across branches"],
+    //     ],
+    //     integrations: ["Glovo", "Chowdeck", "Uber Eats", "Bolt Food"],
+    //     faqs: [
+    //         ["Does the KDS replace paper tickets entirely?", "Most kitchens move fully digital, though tickets can still be printed as a backup during setup."],
+    //         ["Can one kitchen produce for multiple branches?", "Yes — central production lets one kitchen batch-prep shared items and transfer them to satellite branches."],
+    //     ],
+    //     related: ["recipes", "transfers", "pos"],
+    // },
+
     kitchen: {
         cat: "ops",
         icon: "chef",
         title: "Kitchen & Central Production",
-        tagline: "Turn inventory into production. Manage preparation and central kitchen operations with the stock information your teams depend on.",
+        tagline:
+            "Turn every order into organized production—and every production run into controlled supply. Connect recipes, menu items, kitchen stations, orders, production, and branch demand in one workflow. From the kitchen floor to your central production operation, Sandwich keeps teams aligned on what needs to be made, where it needs to go, and what was actually received.",
         stats: [
-            ["30%", "faster order-to-service time"],
-            ["Live", "kitchen display routing by station"],
-            ["1", "central production view across branches"],
+            ["1", "connected workflow from menu to production"],
+            ["2", "production environments: branch kitchen & central kitchen"],
+            ["360°", "visibility across orders, recipes, production, and transfers"],
         ],
-        desc: "The Kitchen Display System routes tickets to the right station the moment an order fires, while the 3D kitchen view gives a manager a glance at what's backed up before it becomes a problem.",
+        desc:
+            "A busy restaurant kitchen has to answer more than \u201cwhat are we cooking?\u201d It needs to know what was ordered, how it should be prepared, which ingredients are required, what each station is responsible for, what the central kitchen needs to produce, and what each branch actually receives. Sandwich connects those workflows so your kitchen and production teams work from the same operational picture.",
+
+        // images.overview -> images/modules/kitchen/overview.png
+        // images.workflow -> images/modules/kitchen/workflow.png
+        // images.recipesMenu, images.kitchenOperations, images.recipeCompliance,
+        // images.centralKitchen, images.centralKitchenTransfers,
+        // images.productionIntelligence, images.kitchenShifts -> one per deep dive
+        images: {
+            overview: { alt: "Kitchen operations dashboard with active orders, menu items, kitchen activity, production/transfer information, and operational status" },
+            workflow: { alt: "Kitchen-to-branch production workflow: Menu/Recipe → Order/Demand → Production → Central Kitchen → Dispatch → Branch Receipt → Reconciliation" },
+            recipesMenu: { alt: "Menu item and recipe detail screen showing a menu item connected to its recipe, with ingredients and quantities" },
+            kitchenOperations: { alt: "Kitchen dashboard and order management screen showing active kitchen orders with status indicators, order details, and station context" },
+            recipeCompliance: { alt: "Recipe compliance screen showing a compliance check with recipe/menu item information and compliance status" },
+            centralKitchen: { alt: "Central Kitchen dashboard showing branch demand aggregated by item, pending/approved orders, production batches, and transfers" },
+            centralKitchenTransfers: { alt: "Central Kitchen transfer screen showing source, destination branch, items, quantities, dispatch status, receipt status, and dispute indicators" },
+            productionIntelligence: { alt: "Aggregated demand and production planning screen showing items with aggregated quantities across branches, split between approved and pending demand" },
+            kitchenShifts: { alt: "Kitchen shifts screen showing active/completed shifts, team members, shift times, and clock-in/out status" },
+        },
+
         features: [
-            ["chef", "Kitchen Display System", "Digital tickets replace paper, routed automatically by station."],
-            ["box", "3D kitchen activity view", "A live spatial view of order status across every station."],
-            ["truck", "Central production", "Batch-produce shared components for multiple branches from one kitchen."],
-            ["check", "Formal validation", "Prepped output is confirmed before it posts back to stock."],
+            ["chef", "Orders & kitchen workflow", "Create and manage kitchen orders, track their status, and keep production activity connected to the orders coming through the operation."],
+            ["box", "Recipes & ingredients", "Define recipes, attach their ingredients, and maintain the relationship between menu items and the recipes used to produce them."],
+            ["truck", "Kitchen stations", "Organize kitchen operations around defined stations so production can reflect how your kitchen is actually structured."],
+            ["check", "Central production", "Designate a branch as the Central Kitchen, receive production demand from branches, record production batches, and dispatch finished stock where it is needed."],
+            ["chart", "Controlled transfers", "Track stock moving from the Central Kitchen to branches, confirm receipt at the destination, and resolve disputes when what was dispatched doesn't match what was received."],
         ],
+
         steps: [
-            ["Fire", "Orders from POS or online channels hit the KDS instantly."],
-            ["Route", "Tickets are routed to the correct station automatically."],
-            ["Prep", "Staff work the recipe card and mark items ready."],
-            ["Validate", "Completed prep is confirmed, updating stock and cost."],
+            ["Build the menu & recipes", "Create menu items and define the recipes and ingredients behind them."],
+            ["Receive the demand", "Kitchen orders and internal Central Kitchen orders create a clear picture of what needs to be produced."],
+            ["Produce", "Kitchen teams work through operational demand, while the Central Kitchen can consolidate approved branch requirements and record production batches."],
+            ["Dispatch", "Central Kitchen sends produced stock to the branches that requested it."],
+            ["Receive & reconcile", "The destination branch confirms receipt. If there's a discrepancy, the transfer can be rejected or the affected item can be taken through a dispute-resolution process."],
         ],
+
+        deepDives: [
+            {
+                field: "recipesMenu",
+                eyebrow: "Recipes & Menu",
+                title: "Know exactly what goes into every dish.",
+                desc: "Consistency starts with a clear definition of what you're producing. Sandwich lets you create menu items, define recipes, and manage the ingredients associated with each recipe—giving your kitchen a structured foundation for production.",
+                features: [
+                    ["Manage menu items", "Create, update, view, and manage the menu items your kitchen produces."],
+                    ["Build recipes", "Create recipes and connect them to the relevant menu items."],
+                    ["Define ingredients", "Add, update, or remove ingredients from recipes."],
+                    ["Keep recipes current", "Update recipes as preparation requirements change while maintaining a structured relationship between the menu item and its ingredients."],
+                ],
+            },
+            {
+                field: "kitchenOperations",
+                eyebrow: "Kitchen Operations",
+                title: "Give every order a clear path through the kitchen.",
+                desc: "Orders move quickly. Your kitchen system needs to keep up without losing visibility. Sandwich provides a centralized view of kitchen orders and their status while giving your operation a structure for organizing production around kitchen stations.",
+                features: [
+                    ["Track kitchen orders", "Create and retrieve orders and view the details associated with each order."],
+                    ["Update order status", "Move orders through their operational status as kitchen work progresses."],
+                    ["Organize kitchen stations", "Create and manage the stations that make up your kitchen operation."],
+                    ["Monitor the kitchen", "Use the kitchen dashboard to bring operational information into one view."],
+                ],
+            },
+            {
+                field: "recipeCompliance",
+                eyebrow: "Recipe Compliance",
+                title: "Consistency shouldn't depend on who's on the line.",
+                desc: "Recipes define how your food should be produced. Compliance checks help your operation verify that production follows those definitions. Sandwich supports recipe compliance checks so your team can create and review compliance records against the recipes used in the kitchen.",
+                features: [
+                    ["Check recipe compliance", "Create compliance checks against your recipes."],
+                    ["Review compliance records", "Retrieve and review previous recipe compliance checks."],
+                    ["Keep production accountable", "Use recipe compliance information as part of your kitchen's operational quality process."],
+                ],
+            },
+            {
+                field: "centralKitchen",
+                eyebrow: "Central Kitchen",
+                title: "Produce once. Supply many branches.",
+                desc: "For multi-branch operations, production doesn't always need to happen independently at every location. Designate a branch as your Central Kitchen, consolidate demand from branches, produce in batches, and distribute finished stock to the locations that need it.",
+                features: [
+                    ["Designate your Central Kitchen", "Identify the organization's designated Central Kitchen branch."],
+                    ["Receive internal production orders", "Branches can place internal orders requesting production from the Central Kitchen."],
+                    ["Aggregate demand", "See demand consolidated by item across branches, separated into approved and pending requirements."],
+                    ["Record production batches", "Create and track production batches as the Central Kitchen fulfills demand."],
+                ],
+            },
+            {
+                field: "centralKitchenTransfers",
+                eyebrow: "Central Kitchen Transfers",
+                title: "Know what left production—and what arrived at the branch.",
+                desc: "Moving stock between locations shouldn't create a blind spot. Sandwich tracks Central Kitchen transfers from dispatch through branch receipt, with controls for rejection and dispute resolution.",
+                features: [
+                    ["Dispatch", "Send produced stock from the Central Kitchen to a requesting branch."],
+                    ["Track transfers", "View transfers and their associated details throughout the process."],
+                    ["Confirm receipt", "The receiving branch confirms what arrived."],
+                    ["Protect the stock ledger", "The stock ledger updates when the branch confirms receipt—not simply when the transfer is dispatched."],
+                    ["Resolve discrepancies", "If a transfer item is disputed, the issue can be taken through a dedicated resolution workflow."],
+                    ["Reject transfers", "An in-transit transfer can be rejected before receipt when necessary."],
+                ],
+            },
+            {
+                field: "productionIntelligence",
+                eyebrow: "Production Intelligence",
+                title: "Turn branch demand into a production plan.",
+                desc: "Central production becomes more efficient when you can see demand before production begins. Sandwich aggregates Central Kitchen demand across branches, giving production teams a consolidated view of what needs to be produced.",
+                features: [
+                    ["Aggregate demand by item", "See how much of each item is being requested across branches."],
+                    ["Separate approved and pending demand", "Understand what production demand has been approved versus what is still awaiting action."],
+                    ["Track production batches", "Maintain a record of production batches created by the Central Kitchen."],
+                    ["Connect demand to distribution", "Move from branch demand to production and ultimately to controlled branch transfers."],
+                ],
+            },
+            {
+                field: "kitchenShifts",
+                eyebrow: "Kitchen Shifts",
+                title: "Keep kitchen activity connected to the people doing the work.",
+                desc: "Kitchen operations happen in shifts, not spreadsheets. Sandwich provides a kitchen shift workflow for creating shifts and recording clock-in and clock-out activity.",
+                features: [
+                    ["Create kitchen shifts", "Set up shifts around your kitchen operation."],
+                    ["Track shift activity", "Record clock-in and clock-out activity against kitchen shifts."],
+                    ["Maintain operational visibility", "Keep shift activity within the same system as kitchen operations."],
+                ],
+            },
+        ],
+
+        accessHeadline: "From the kitchen floor to the production dashboard.",
+        accessLede:
+            "Kitchen teams need operational simplicity. Managers need the broader picture. Sandwich connects the two so the people producing food can focus on the work, while managers can understand orders, recipes, production, demand, and transfers.",
+        accessMobileTitle: "On the kitchen floor",
+        accessMobileDesc: "Put operational workflows closer to the teams doing the work.",
         accessMobile: [
-            ["Kitchen staff", "view and clear KDS tickets by station"],
-            ["Processing staff", "log batch production against central recipes"],
+            ["Kitchen teams", "work with kitchen orders and operational statuses"],
+            ["Production teams", "work with production activity and transfers where supported"],
+            ["Branch teams", "place or receive internal Central Kitchen orders"],
         ],
+        accessWebTitle: "Running production",
+        accessWebDesc: "Give managers the broader tools required to coordinate kitchen and central production operations.",
         accessWeb: [
-            ["Branch Manager", "monitors kitchen throughput via the 3D view"],
-            ["Super Admin", "compares kitchen speed across branches"],
+            ["Kitchen managers", "monitor kitchen activity, orders, stations, and shifts"],
+            ["Central Kitchen teams", "review branch demand and manage production batches"],
+            ["Operations managers", "monitor transfers, receipts, and outstanding issues"],
         ],
-        integrations: ["Glovo", "Chowdeck", "Uber Eats", "Bolt Food"],
+
+        connectedHeadline: "From recipe to plate. From production to branch.",
+        connectedLede:
+            "Kitchen operations shouldn't be separated from the rest of the restaurant. Recipes define what you produce. Orders create demand. Inventory supports production. Central Kitchen fulfills branch requirements. Transfers move finished stock where it is needed.",
+        connected: [
+            ["box", "Menu", "Define what your restaurant produces."],
+            ["chef", "Recipes", "Define how each menu item is made."],
+            ["reports", "Inventory", "Connect recipes and production to the ingredients and stock your operation manages."],
+            ["pos", "Orders", "Turn customer or internal demand into operational work."],
+            ["transfer", "Central Production", "Consolidate demand and produce at scale."],
+            ["truck", "Transfers", "Move finished production to the branches that need it."],
+        ],
+
         faqs: [
-            ["Does the KDS replace paper tickets entirely?", "Most kitchens move fully digital, though tickets can still be printed as a backup during setup."],
-            ["Can one kitchen produce for multiple branches?", "Yes — central production lets one kitchen batch-prep shared items and transfer them to satellite branches."],
+            ["Can I create recipes for menu items?", "Yes. Recipes can be created and associated with menu items."],
+            ["Can I define the ingredients in a recipe?", "Yes. Ingredients can be added, updated, viewed, and removed from recipes."],
+            ["Can I manage kitchen orders?", "Yes. Kitchen orders can be created, viewed, and updated through their operational status."],
+            ["Can I create kitchen stations?", "Yes. Kitchen stations can be created, listed, and updated."],
+            ["Can I designate a branch as the Central Kitchen?", "Yes. An organization can designate a branch as its Central Kitchen and retrieve the currently designated Central Kitchen."],
+            ["Can branches request production from the Central Kitchen?", "Yes. Branches can place internal production orders to the Central Kitchen."],
+            ["Can I see demand across all branches?", "Yes. Central Kitchen demand can be aggregated by item across branches, with approved and pending demand shown separately."],
+            ["Can I record Central Kitchen production?", "Yes. Production batches can be created and tracked."],
+            ["Can the Central Kitchen send stock to branches?", "Yes. Central Kitchen transfers can be dispatched to branches and tracked."],
+            ["When does a Central Kitchen transfer affect the stock ledger?", "The documented workflow states that the stock ledger updates when the receiving branch confirms receipt—not when the transfer is dispatched."],
+            ["What happens if the branch receives something different?", "A transfer item can enter a dispute workflow, and the dispute can be resolved through the transfer system."],
+            ["Can a branch reject a transfer?", "Yes. An in-transit transfer can be rejected before receipt."],
+            ["Can I track kitchen shifts?", "Yes. Kitchen shifts can be created and clock-in/out activity can be recorded."],
         ],
-        related: ["recipes", "transfers", "pos"],
+
+        ctaEyebrow: "Ready when you are",
+        ctaHeadline: "Stop running your kitchen on disconnected processes.",
+        ctaDesc: "Bring orders, recipes, kitchen operations, central production, branch demand, and transfers into one connected system.",
+        ctaNotes: ["No credit card required", "Full onboarding included"],
+
+        related: ["inventory", "procurement", "accounting"],
     },
 
     transfers: {
