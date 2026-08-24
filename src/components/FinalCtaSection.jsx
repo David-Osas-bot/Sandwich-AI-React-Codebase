@@ -121,13 +121,67 @@
 
 
 
-
-
 import React from 'react';
 
-const FinalCtaSection = ({ eyebrow, title, description, trust }) => {
+const FinalCtaSection = ({
+  eyebrow = "Ready when you are",
+  title = "Stop managing your restaurant in the dark",
+  description = "Book a 30-minute live demo. We'll show you Sandwich running on a restaurant like yours, with your real use cases.",
+  trust = "No credit card required · 22-week deployment guarantee · Full onboarding included"
+}) => {
   return (
     <section style={{ paddingTop: '0' }}>
+      <style>{`
+        .cta-final {
+          position: relative;
+          overflow: hidden; 
+          padding: 80px 24px;
+          border-radius: 24px;
+          text-align: center;
+        }
+
+        .cta-final h2 {
+          font-size: clamp(26px, 4.5vw, 42px);
+          line-height: 1.25;
+          margin-bottom: 16px;
+        }
+
+        .hero-ctas {
+          display: flex;
+          gap: 16px;
+          justify-content: center;
+          align-items: center;
+          margin: 32px 0;
+        }
+
+        @media (max-width: 600px) {
+          .cta-final {
+            padding: 48px 18px;
+            border-radius: 18px;
+          }
+
+          .hero-ctas {
+            flex-direction: column;
+            width: 100%;
+            gap: 12px;
+          }
+
+          .hero-ctas .btn {
+            width: 100%;
+            justify-content: center;
+            text-align: center;
+            display: inline-flex;
+            box-sizing: border-box;
+          }
+
+          .parallax-field .pl {
+            width: 400px !important;
+            height: 400px !important;
+            top: -100px !important;
+          }
+        }
+      `}</style>
+
       <div className="wrap">
         <div className="cta-final reveal">
           <div className="parallax-field">
