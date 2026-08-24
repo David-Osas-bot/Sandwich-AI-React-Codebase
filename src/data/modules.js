@@ -199,7 +199,10 @@ export const MODULES = {
         accessWebDesc: "Full-screen analytics, approvals, and configuration from any browser.",
         connectedHeadline: "Procurement doesn't work in isolation.",
         connectedLede: "Every purchase creates information that can support the next decision. A procurement request becomes a purchase order. A purchase order becomes a delivery. A delivery becomes a goods received record. That activity feeds your budget, spend, delivery, and supplier-performance visibility.",
-
+        ctaEyebrow: "READY WHEN YOU ARE",
+        ctaHeadline: "Stop managing your restaurant in the dark.",
+        ctaDesc: "Bring requests, approvals, purchase orders, deliveries, receiving, budgets, and supplier performance into one connected procurement workflow.",
+        ctaNotes: ["No credit card required", "Full onboarding included"],
         faqs: [
             ["Can procurement requests be approved or rejected?", "Yes — procurement requests can be reviewed and approved or rejected by authorized managers."],
             ["Can purchase orders go through an approval process?", "Yes — purchase orders can be submitted for approval, approved, rejected, and tracked through their approval history."],
@@ -356,7 +359,10 @@ export const MODULES = {
         accessWebDesc: "Give managers and administrators the broader view needed to configure and monitor inventory.",
         connectedHeadline: "One inventory record. Multiple ways to work with it.",
         connectedLede: "Inventory information becomes more useful when every part of the system speaks the same language. An item can have multiple packaging configurations, be assigned to specific branches, and have separate stock records at each location—all while remaining part of the same inventory structure.",
-
+        ctaEyebrow: "READY WHEN YOU ARE",
+        ctaHeadline: "Stop guessing what's in stock.",
+        ctaDesc: "Know what's available, where it is, how it's packaged, and what needs attention—across every branch.",
+        ctaNotes: ["No credit card required", "Full onboarding included"],
         connected: [
             ["box", "Items", "Define the products and materials your operation manages."],
             ["transfer", "Packaging", "Translate between the different ways an item is purchased, received, or counted."],
@@ -678,7 +684,6 @@ export const MODULES = {
             ["Administrators", "configure accounting and tax structures for the organization"],
         ],
 
-        // accounting
         accessHeadline: "Financial control for the people who need it.",
         accessLede: "Accounting requires detailed control for finance teams and clear visibility for decision-makers. Sandwich provides the accounting foundation while allowing different users to work with the information relevant to their responsibilities.",
         accessMobileTitle: "Where financial activity starts",
@@ -687,7 +692,10 @@ export const MODULES = {
         accessWebDesc: "Give finance and management teams the deeper tools required to manage accounting.",
         connectedHeadline: "Your accounting should know what the operation is doing.",
         connectedLede: "Accounting becomes more powerful when financial information doesn't exist in isolation. Sandwich provides the accounting foundation that can sit alongside the operational systems running your restaurant—from procurement and inventory to sales and other financial activity.",
-
+        ctaEyebrow: "READY WHEN YOU ARE",
+        ctaHeadline: "Stop looking at your numbers in isolation.",
+        ctaDesc: "Bring your accounts, journal entries, General Ledger, financial reports, and tax configuration into one connected accounting system.",
+        ctaNotes: ["No credit card required", "Full onboarding included"],
         connected: [
             ["box", "Operations", "Operational activity creates the financial information your accounting team needs to understand."],
             ["reports", "Accounts", "Organize financial activity using your chart of accounts."],

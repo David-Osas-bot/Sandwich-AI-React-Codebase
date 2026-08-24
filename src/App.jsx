@@ -52,7 +52,6 @@ function App() {
           element={
             <main>
               <Module />
-              <FinalCtaSection />
             </main>
           }
         />
