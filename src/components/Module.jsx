@@ -1,6 +1,3 @@
-// src/components/Module.jsx
-// src/components/Module.jsx
-
 import React, { useState, useEffect } from "react";
 import { useParams, Link, Navigate } from "react-router-dom";
 import { MODULES, CATS } from "../data/modules";
@@ -271,7 +268,7 @@ const Module = () => {
             <section className="mod-section">
                 <div className="wrap">
                     <div className="mod-eyebrow">Overview</div>
-                    <h2 className="mod-h2">What {m.title.split("&")[0].trim()} does</h2>
+                    <h2 className="mod-h2">What {m.title} does</h2>
                     <p className="mod-section-lede">{m.desc}</p>
 
                     {/* HERO OVERVIEW IMAGE */}
@@ -310,7 +307,7 @@ const Module = () => {
                         </div>
 
                         {/* WORKFLOW IMAGE */}
-                        <ModuleImage slug={slug} field="procurementWorkflow" alt={`${m.title} Workflow`} />
+                        <ModuleImage slug={slug} field="workflow" alt={`${m.title} Workflow`} />
                     </div>
                 </section>
             )}
