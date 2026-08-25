@@ -394,39 +394,182 @@ export const MODULES = {
         cat: "ops",
         icon: "truck",
         title: "Supplier Management",
-        tagline: "Onboard, score, and negotiate with suppliers using the same data your procurement team already sees.",
+        tagline:
+            "Know your suppliers. Control what you buy. Keep every supplier transaction accountable. Manage suppliers, supplier catalogs, pricing, purchase orders, deliveries, invoices, returns, and credit notes from one connected workspace.",
         stats: [
-            ["20+", "native integrations across the platform"],
-            ["Full", "price history per supplier, per item"],
-            ["1", "supplier portal for POs and GRNs"],
+            ["1", "connected supplier workflow"],
+            ["360°", "supplier visibility"],
+            ["1", "source of truth for supplier transactions"],
         ],
-        desc: "Every supplier gets a scorecard built from real delivery data — on-time rate, price consistency, and quality flags — so renewal conversations are backed by evidence, not memory.",
+        desc:
+            "Your supplier relationship doesn't end when a purchase order is created. You need to know who you're buying from, what they're supplying, what they're charging, whether they delivered, what was invoiced, what was returned, and whether you are owed a credit. Sandwich connects those activities into one supplier management workflow.",
+
+        images: {
+            overview: { alt: "Supplier overview dashboard with supplier list, verification status, active suppliers, purchase orders, invoices, and supplier activity" },
+            workflow: { alt: "Supplier lifecycle: Supplier → Products & Pricing → PO → Delivery → Invoice → 3-Way Match → Return → Credit Note" },
+            directory: { alt: "Supplier directory and profile screen showing verification status, active/inactive state, contact information, and supplier statistics" },
+            productsPricing: { alt: "Supplier profile with product catalog, unit price, bulk pricing, discounts, stock, and product statistics" },
+            purchaseOrders: { alt: "Purchase order detail screen with supplier, items, quantities, status, delivery date, and activity timeline" },
+            invoices: { alt: "Supplier invoice and 3-way matching screen showing PO, GRN, and invoice connected with matching status" },
+            returns: { alt: "Supplier return screen with items, quantities, reason/status, and stock adjustment" },
+            creditNotes: { alt: "Supplier credit note screen linked to source transaction, with amount/details, status, and issue action" },
+            experiences: { alt: "Internal web dashboard and supplier portal shown side by side" },
+            dataFlow: { alt: "Supplier Management connected to Procurement, Inventory, and Accounting" },
+        },
+
         features: [
-            ["truck", "Supplier onboarding", "Structured intake for banking details, categories, and standing terms."],
-            ["chart", "Performance scorecards", "On-time delivery rate, price variance, and quality flags per supplier."],
-            ["coin", "Price history", "Every price change is logged against the item and the supplier."],
-            ["users", "Supplier portal", "Suppliers see their own POs and GRN status without dashboard access."],
+            ["users", "Manage supplier profiles", "Register suppliers, maintain their information, verify them, and control their active status."],
+            ["box", "Manage supplier catalogs", "Keep track of the products each supplier provides, including pricing, discounts, bulk pricing, and supplier product availability."],
+            ["clipboard", "Manage purchase orders", "See supplier-specific purchase orders and follow their acceptance, delivery, and activity history."],
+            ["file-check", "Track supplier transactions", "Connect invoices, returns, and credit notes to the purchasing process."],
+            ["chart", "Keep supplier data organized", "Use supplier statistics and product statistics to understand your supplier base and purchasing relationships."],
         ],
+
         steps: [
-            ["Onboard", "Capture supplier details, categories, and payment terms."],
-            ["Quote & price", "Standing prices load into procurement's catalog."],
-            ["Deliver", "Performance is scored automatically against each GRN."],
-            ["Review", "Scorecards inform renewal and renegotiation decisions."],
+            ["Supplier", "Register and verify the supplier."],
+            ["Products & pricing", "Add the products they supply and maintain pricing, bulk pricing, and discounts."],
+            ["Purchase order", "Track what you've ordered and allow suppliers to respond."],
+            ["Delivery", "Monitor delivery status and dates."],
+            ["Invoice", "Record the supplier invoice against the purchase order."],
+            ["3-way match", "Match PO + GRN + Invoice."],
+            ["Return", "Record goods returned to the supplier when necessary."],
+            ["Credit note", "Capture credits resulting from returns, invoices, or GRNs."],
         ],
+
+        // Six deep-dive subsections rendered between "Step by step" and
+        // "One system, two experiences" — matches the PDF's dedicated
+        // sections for Supplier Directory, Supplier Products & Pricing,
+        // Supplier Purchase Orders, Supplier Invoices, Supplier Returns,
+        // and Supplier Credit Notes.
+        deepDives: [
+            {
+                field: "directory",
+                eyebrow: "Supplier Directory",
+                title: "One place for every supplier you work with.",
+                desc: "Stop managing supplier information across spreadsheets, chats, and disconnected records. Sandwich gives your organization a centralized supplier directory where your team can create, verify, update, deactivate, and review suppliers.",
+                features: [
+                    ["Register suppliers", "Create supplier profiles and keep their information within your organization."],
+                    ["Verify suppliers", "Mark suppliers as verified when they have completed your organization's verification process."],
+                    ["Manage supplier status", "Deactivate suppliers without losing the supplier record."],
+                    ["View supplier details", "Open a supplier profile to see the information associated with that supplier."],
+                    ["Supplier statistics", "Get visibility into supplier-level activity and performance data supported by the system."],
+                ],
+            },
+            {
+                field: "productsPricing",
+                eyebrow: "Supplier Products & Pricing",
+                title: "Know exactly what each supplier can provide—and at what price.",
+                desc: "Supplier management becomes much more useful when your team can see the products connected to each supplier. Build supplier-specific catalogs and maintain the pricing information your procurement team needs.",
+                features: [
+                    ["Build supplier catalogs", "Add and manage the products supplied by each supplier."],
+                    ["Manage supplier pricing", "Maintain product prices associated with individual suppliers."],
+                    ["Bulk pricing", "Record pricing structures for bulk purchases."],
+                    ["Supplier discounts", "Add product-level discounts offered by suppliers."],
+                    ["Track supplier product stock", "Update and view supplier product stock information where applicable."],
+                    ["Organization-wide supplier catalog", "Access supplier products available to your organization without having to search through individual records."],
+                ],
+            },
+            {
+                field: "purchaseOrders",
+                eyebrow: "Supplier Purchase Orders",
+                title: "Give suppliers a clear view of what you've ordered.",
+                desc: "Once a purchase order reaches a supplier, the relationship becomes collaborative. Suppliers can see their purchase orders, accept or decline them, update delivery information, and mark orders as delivered.",
+                features: [
+                    ["Accept or decline orders", "Suppliers can respond directly to purchase orders."],
+                    ["Track delivery status", "Keep delivery information visible throughout the order lifecycle."],
+                    ["Update delivery dates", "Suppliers can communicate changes to expected delivery dates."],
+                    ["Mark orders delivered", "Suppliers can indicate when an order has been delivered."],
+                    ["Activity history", "Maintain an activity log around supplier purchase orders."],
+                    ["Supplier PO statistics", "Get an overview of supplier purchase order activity."],
+                ],
+            },
+            {
+                field: "invoices",
+                eyebrow: "Supplier Invoices",
+                title: "Match what you're billed against what you ordered and received.",
+                desc: "An invoice shouldn't exist in isolation. Sandwich lets your team record supplier invoices against purchase orders and perform a 3-way match between the invoice, PO, and goods received records.",
+                features: [
+                    ["Record supplier invoices", "Create an invoice against a purchase order."],
+                    ["Track invoices", "Search and filter supplier invoices across your organization."],
+                    ["3-way matching", "Match the invoice against its purchase order and associated GRNs."],
+                    ["Download branded invoices", "Generate and download supplier invoice records as branded PDFs."],
+                ],
+            },
+            {
+                field: "returns",
+                eyebrow: "Supplier Returns",
+                title: "When something comes back, your stock records should know about it.",
+                desc: "Damaged, incorrect, or unacceptable goods shouldn't disappear into a manual process. Record supplier returns directly in Sandwich and keep the stock position aligned with what was actually returned.",
+                features: [
+                    ["Record returns", "Create a record whenever goods are returned to a supplier."],
+                    ["Keep stock accurate", "Recording a supplier return immediately decrements the relevant stock according to the documented workflow."],
+                    ["Track returns", "View and filter supplier return records across the organization."],
+                ],
+            },
+            {
+                field: "creditNotes",
+                eyebrow: "Supplier Credit Notes",
+                title: "Turn supplier returns and adjustments into traceable credits.",
+                desc: "A supplier may owe your business money or value after a return, incorrect delivery, or billing adjustment. Sandwich lets your team raise credit notes against a GRN, invoice, or supplier return and take them through an issuance workflow.",
+                features: [
+                    ["Raise credit notes", "Create a credit note against the relevant GRN, invoice, or return."],
+                    ["Track credit notes", "Search and filter credit notes across your supplier transactions."],
+                    ["Issue credit notes", "Move draft credit notes through the issuing workflow."],
+                    ["Download branded PDFs", "Generate branded PDF versions of supplier credit notes."],
+                ],
+            },
+        ],
+
+        accessHeadline: "Your team manages suppliers. Suppliers manage their side of the relationship.",
+        accessLede:
+            "Supplier Management isn't only for your internal procurement team. Sandwich supports workflows for both your organization and suppliers, giving each side the appropriate view of the purchasing relationship.",
+        accessMobileTitle: "Supplier Portal",
+        accessMobileDesc: "Suppliers can access their own relationship with your organization.",
         accessMobile: [
-            ["Procurement staff", "log delivery issues against a supplier in the moment"],
-            ["Branch teams", "flag quality problems with photo evidence"],
+            ["Suppliers", "manage their profile"],
+            ["Suppliers", "view and respond to purchase orders"],
+            ["Suppliers", "update delivery information and mark orders as delivered"],
+            ["Suppliers", "view their order activity"],
         ],
+        accessWebTitle: "Web Dashboard",
+        accessWebDesc: "Procurement and operations teams can manage suppliers, products, pricing, purchase orders, invoices, returns, and credit notes.",
         accessWeb: [
-            ["Super Admin", "reviews scorecards before renewing supplier contracts"],
-            ["Finance Officer", "tracks supplier spend and payment terms"],
+            ["Procurement team", "manages suppliers, catalogs, pricing, and purchase orders"],
+            ["Managers", "review supplier activity and purchasing information"],
+            ["Finance team", "works with invoices, matching, returns, and credit notes"],
+            ["Operations team", "maintains supplier and product information"],
         ],
-        integrations: ["Paystack", "WhatsApp Business", "QuickBooks"],
+
+        connectedHeadline: "Supplier Management works with the rest of Sandwich.",
+        connectedLede:
+            "Your supplier relationship is connected to the rest of restaurant operations. A supplier provides the products you purchase. Those purchases become inventory. Goods received affect stock. Invoices feed the financial workflow. Returns and credit notes keep the records aligned.",
+        connected: [
+            ["box", "Procurement", "Create and manage the purchase orders that drive supplier transactions."],
+            ["chart", "Inventory", "Receive goods into stock and account for supplier returns."],
+            ["coin", "Accounting", "Connect supplier invoices and credit notes to the financial side of purchasing."],
+            ["map", "Operations", "Give restaurant teams visibility into the suppliers and products supporting their branches."],
+        ],
+
+        ctaEyebrow: "READY WHEN YOU ARE",
+        ctaHeadline: "Build stronger supplier relationships with complete visibility.",
+        ctaDesc:
+            "Manage your suppliers, products, orders, deliveries, invoices, returns, and credits from one connected restaurant operations platform.",
+        ctaNotes: ["No credit card required", "Full onboarding included"],
+
         faqs: [
-            ["Can suppliers see their own orders?", "Yes, through a limited supplier portal view scoped to their own POs and GRN status."],
-            ["How is a supplier's score calculated?", "From on-time delivery rate, price consistency against agreed terms, and quality flags raised at receiving."],
+            ["Can I manage all my suppliers in one place?", "Yes. Suppliers can be registered, viewed, updated, verified, and deactivated within the system."],
+            ["Can I manage products for each supplier?", "Yes. Each supplier can have its own product catalog."],
+            ["Can suppliers have different prices for the same product?", "The system supports supplier-specific products and pricing, including bulk pricing and discounts."],
+            ["Can suppliers see purchase orders?", "Yes. Supplier purchase orders can be accessed through the supplier-side workflow."],
+            ["Can suppliers accept or decline purchase orders?", "Yes."],
+            ["Can suppliers update delivery information?", "Yes. Suppliers can update delivery dates and delivery status and mark orders as delivered."],
+            ["Can I match supplier invoices against what was ordered and received?", "Yes. Supplier invoices support a 3-way match against the PO and GRN(s)."],
+            ["Can I record supplier returns?", "Yes. Supplier returns can be recorded and tracked, with the documented workflow decrementing stock immediately."],
+            ["Can I issue supplier credit notes?", "Yes. Credit notes can be raised against a GRN, invoice, or return and then issued."],
+            ["Can I download supplier invoices and credit notes?", "Yes. Both can be downloaded as branded PDFs."],
         ],
-        related: ["procurement", "inventory", "payments"],
+
+        related: ["procurement", "inventory", "accounting"],
     },
 
     recipes: {
@@ -1063,36 +1206,167 @@ export const MODULES = {
         cat: "money",
         icon: "pos",
         title: "POS & Sales",
-        tagline: "Full-screen table service with split bills, and every sale depleting stock the instant it's rung in.",
+        tagline:
+            "Turn every order into insight—and every customer interaction into an opportunity. Run your restaurant sales with a clearer view of what customers are buying, how they're paying, what they're saying, and where your operation can improve.",
         stats: [
-            ["Live", "stock depletion on every sale"],
-            ["Split", "bills across multiple payment methods"],
-            ["1", "screen for aggregator orders"],
+            ["360°", "view of customer activity"],
+            ["Real-time", "sales & order visibility"],
+            ["1", "connected customer experience"],
         ],
-        desc: "POS isn't a separate system bolted onto the ledger — every sale posts to stock and finance in real time, and orders from delivery aggregators land in the same queue as a table order.",
+        desc:
+            "Every transaction tells you something: what customers order, how they pay, when they order, which dishes perform, what they complain about, and what they praise. Sandwich brings those signals together so restaurant teams can move beyond simply recording sales and start understanding the customer experience behind them.",
+
+        images: {
+            overview: { alt: "Sales dashboard with revenue trends, order flow, order types, payment methods, customer insights, top dishes, complaints, and review metrics" },
+            workflow: { alt: "POS & Sales ecosystem: Orders → Sales → Customer → Complaints → Reviews → Analytics" },
+            salesIntelligence: { alt: "Sales analytics dashboard showing sales trend, sales by order type, sales by payment method, top dishes, and performance metrics" },
+            orderFlow: { alt: "Order flow tracker showing orders moving through stages with counts, statuses, and timing indicators" },
+            customerManagement: { alt: "Customer profile showing contact information, order history, customer statistics, and recent activity" },
+            customerInsights: { alt: "Customer insights analytics with cards and charts alongside order and sales information" },
+            complaints: { alt: "Complaints management dashboard with complaint list, filtering, status/details, statistics, and trend chart" },
+            reviews: { alt: "Reviews & feedback dashboard with review feed, review statistics, hourly trend, and top mentions" },
+            experiences: { alt: "POS/order-taking experience beside the management analytics dashboard" },
+            dataFlow: { alt: "POS & Sales connected to Kitchen, Inventory, Accounting, and Customer Service" },
+        },
+
         features: [
-            ["pos", "Table & floor plan", "Visual floor management with live table status."],
-            ["wallet", "Split bills", "Multiple payment methods on one bill, reconciled together."],
-            ["chef", "KDS routing", "Orders fire straight to the kitchen display on submission."],
-            ["globe", "Aggregator orders", "Glovo, Chowdeck, Uber Eats, and Bolt Food orders in one queue."],
+            ["users", "Customer management", "Build a structured customer database and view individual customer information and order history."],
+            ["chart", "Sales intelligence", "Understand sales trends, payment methods, order types, top-selling dishes, and overall performance."],
+            ["transfer", "Order flow visibility", "Track the movement of orders through the operation and understand where demand is coming from."],
+            ["check", "Complaints management", "Capture, manage, filter, and analyze customer complaints instead of letting issues disappear into chats or conversations."],
+            ["reports", "Reviews & feedback", "Collect customer reviews, monitor trends, and identify the topics customers mention most."],
         ],
+
         steps: [
-            ["Order", "Waitstaff or a cashier takes the order at the table or counter."],
-            ["Fire", "The ticket routes to the KDS automatically."],
-            ["Serve", "Kitchen marks items ready; service completes the order."],
-            ["Settle", "Payment is taken, split if needed, and stock depletes instantly."],
+            ["Sell", "An order is taken and moves through the operation as a sale."],
+            ["Track", "Order flow and sales data build a picture of demand and performance."],
+            ["Know", "Customer records and order history connect each transaction to a person."],
+            ["Listen", "Complaints and reviews capture feedback about the experience."],
+            ["Understand", "Sales, customer, complaint, and review analytics come together to explain performance."],
         ],
-        accessMobile: [["Cashiers & waitstaff", "take orders, split bills, manage tables"]],
+
+        // Five deep-dive subsections rendered between "Step by step" and
+        // "One system, two experiences" — matches the PDF's dedicated
+        // sections for Sales Intelligence, Order Flow, Customer Management,
+        // Customer Insights, Complaints Management, and Reviews & Feedback.
+        deepDives: [
+            {
+                field: "salesIntelligence",
+                eyebrow: "Sales Intelligence",
+                title: "Know what's selling, when it's selling, and how customers are paying.",
+                desc: "Your sales data should answer more than \u201cHow much did we sell?\u201d Sandwich gives you a broader view of restaurant sales performance so you can understand the patterns behind your numbers.",
+                features: [
+                    ["Sales trends", "See how sales change over time and identify patterns in restaurant performance."],
+                    ["Sales by order type", "Understand how much business comes through each order type."],
+                    ["Sales by payment method", "See how customers are paying and how payment methods contribute to sales."],
+                    ["Top-selling dishes", "Identify the dishes driving demand across your operation."],
+                    ["Performance metrics", "Bring key sales and operational performance indicators into one view."],
+                ],
+            },
+            {
+                field: "orderFlow",
+                eyebrow: "Order Flow",
+                title: "See the journey behind every sale.",
+                desc: "Sales don't happen in a vacuum. Orders move through your restaurant before they become completed transactions. Sandwich provides an order-flow tracker that helps teams understand what's happening across that journey.",
+                features: [
+                    ["Track order flow", "Monitor order activity across the operation."],
+                    ["Understand demand", "See how order activity changes and where demand is concentrated."],
+                    ["Connect operations to sales", "Use order-flow information alongside sales performance to understand the operational side of customer demand."],
+                ],
+            },
+            {
+                field: "customerManagement",
+                eyebrow: "Customer Management",
+                title: "Know the people behind the transactions.",
+                desc: "A customer shouldn't just be another order number. Sandwich gives your team a structured customer record with the ability to view customer information and their order history.",
+                features: [
+                    ["Build customer records", "Create and maintain customer profiles."],
+                    ["Find customers quickly", "Search for customers and retrieve customer records, including lookup by phone number."],
+                    ["View order history", "See the orders associated with an individual customer."],
+                    ["Keep customer information current", "Update customer records as information changes."],
+                    ["Understand your customer base", "Use customer statistics and insights to understand broader customer activity."],
+                ],
+            },
+            {
+                field: "complaints",
+                eyebrow: "Complaints Management",
+                title: "Turn customer complaints into operational intelligence.",
+                desc: "A complaint isn't just a problem to close. It's feedback about something that happened in your restaurant. Sandwich gives your team a structured way to capture complaints, manage them, analyze them, and identify trends over time.",
+                features: [
+                    ["Capture complaints", "Create structured complaint records when customers report an issue."],
+                    ["Manage complaints", "View, update, filter, and manage complaints across the operation."],
+                    ["Complaint statistics", "Understand the volume and distribution of complaints."],
+                    ["Complaint trends", "See how complaints change over time."],
+                    ["Find recurring problems", "Use complaint analytics to identify areas where the customer experience may need attention."],
+                ],
+            },
+            {
+                field: "reviews",
+                eyebrow: "Reviews & Feedback",
+                title: "Know what customers are saying about your restaurant.",
+                desc: "Reviews contain signals that raw sales numbers can't show you. Sandwich lets your team capture and manage reviews while surfacing statistics, trends, and the topics customers mention most.",
+                features: [
+                    ["Capture reviews", "Create structured customer review records."],
+                    ["Manage feedback", "View, update, filter, and manage reviews."],
+                    ["Review statistics", "Understand your overall review activity."],
+                    ["Review trends", "See how review activity changes throughout the day."],
+                    ["Top mentions", "Identify the topics and terms appearing most frequently in customer reviews."],
+                ],
+            },
+        ],
+
+        accessHeadline: "Fast for the team. Powerful for management.",
+        accessLede:
+            "The people serving customers need simple workflows. The people running the business need the bigger picture. Sandwich connects both sides through a shared sales and customer data layer.",
+        accessMobileTitle: "On the floor",
+        accessMobileDesc: "Keep customer-facing operations focused on serving customers and processing orders.",
+        accessMobile: [
+            ["Front-of-house teams", "manage customer orders and sales activity"],
+            ["Restaurant teams", "capture customer information and feedback"],
+            ["Managers", "monitor operational activity and customer issues"],
+        ],
+        accessWebTitle: "Running the business",
+        accessWebDesc: "Give managers the analytics and customer visibility required to understand performance.",
         accessWeb: [
-            ["Branch Manager", "monitors table turnover and daily sales"],
-            ["Super Admin", "compares POS performance across branches"],
+            ["Restaurant managers", "monitor sales and order flow"],
+            ["Customer service teams", "manage complaints and reviews"],
+            ["Owners & operators", "understand customers, dishes, sales, and performance"],
         ],
-        integrations: ["Paystack", "Glovo", "Chowdeck", "Uber Eats", "Bolt Food"],
+
+        connectedHeadline: "Every sale connects to the rest of your restaurant.",
+        connectedLede:
+            "POS and sales data shouldn't live separately from operations. Orders generate demand. Demand affects kitchen operations. Sales create financial records. Customer feedback reveals where the experience succeeds or breaks down. Sandwich connects these workflows across the restaurant.",
+        connected: [
+            ["pos", "POS & Orders", "Capture the transaction and understand order activity."],
+            ["chef", "Kitchen", "Turn customer orders into operational work."],
+            ["box", "Inventory", "Connect sales and production demand to the stock behind every dish."],
+            ["coin", "Accounting", "Bring sales activity into the wider financial picture."],
+            ["chat", "Customer Service", "Understand complaints, reviews, and customer behavior."],
+            ["chart", "Analytics", "Turn all of these signals into actionable business insight."],
+        ],
+
+        ctaEyebrow: "READY WHEN YOU ARE",
+        ctaHeadline: "Stop guessing what your customers want.",
+        ctaDesc:
+            "Bring sales, customers, orders, complaints, reviews, and restaurant performance into one connected platform.",
+        ctaNotes: ["No credit card required", "Full onboarding included"],
+
         faqs: [
-            ["Do you have your own delivery riders?", "No — Sandwich integrates directly with the rider and aggregator systems you already use, so dispatch and order status flow into your ledger."],
-            ["Does a sale update stock immediately?", "Yes — a completed sale depletes stock and posts to the ledger the moment it settles."],
+            ["Can I manage customer records?", "Yes. Customers can be created, viewed, updated, filtered, and searched by phone number."],
+            ["Can I see a customer's previous orders?", "Yes. Customer order history is available directly from the customer record."],
+            ["Can I track sales trends?", "Yes. The system provides sales trend analytics."],
+            ["Can I see sales by payment method?", "Yes. Sales can be analyzed by payment method."],
+            ["Can I see sales by order type?", "Yes. Sales analytics include breakdowns by order type."],
+            ["Can I see which dishes sell the most?", "Yes. The analytics module provides top-selling dish information."],
+            ["Can I track complaints?", "Yes. Complaints can be created, managed, filtered, and analyzed."],
+            ["Can I see complaint trends?", "Yes. Complaint trends and complaint analytics are available."],
+            ["Can I manage customer reviews?", "Yes. Reviews can be created, viewed, updated, filtered, and managed."],
+            ["Can I see what customers mention most in reviews?", "Yes. The system provides top review mentions."],
+            ["Can I see review trends?", "Yes. Hourly review trends are available."],
+            ["Can I combine sales and customer insights?", "Yes. The analytics module provides customer insights alongside sales, order, complaint, review, and performance analytics."],
         ],
-        related: ["online-ordering", "payments", "kitchen"],
+
+        related: ["kitchen", "inventory", "accounting"],
     },
 
     "online-ordering": {
